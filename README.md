@@ -1,6 +1,6 @@
 # Restaurant Management Project
 
-**This the project of a web application created in Java Spring and thymeleaf in order to manage the resteuarant.**
+***This the project of a web application created in Java Spring and thymeleaf in order to manage the resteuarant.**
 
 Project's ongoing... 
 
