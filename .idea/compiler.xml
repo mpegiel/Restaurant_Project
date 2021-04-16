@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Restaurant_Project" />
         <module name="restaurant_project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="restaurant_project" target="16" />
+      <module name="Restaurant_Project" target="16" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
