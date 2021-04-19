@@ -13,8 +13,9 @@ public class UserService {
     @Autowired
     private UserRepository repo;
 
-    public Optional<User> login(String username, String password) {
-        return repo.findByUsernameAndPassword(username, password);
+    public User login(String PersonLogin, String PersonPassoword) {
+        User user = repo.findByPersonLoginAndPersonPassoword(PersonLogin, PersonPassoword);
+        return user;
     }
 
 }

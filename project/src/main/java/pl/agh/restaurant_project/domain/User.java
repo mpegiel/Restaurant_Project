@@ -3,38 +3,34 @@ package pl.agh.restaurant_project.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="login")
+@Table(name="Person")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
-    private String username;
-    private String password;
+    private Long personId;
+    private String personLogin;
+    private String personPassoword;
 
     public User () {
 
     }
-    public User(Long id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+    public User(Long PersonId, String PersonUsername, String PersonPassoword) {
+        this.personId = PersonId;
+        this.personLogin = PersonUsername;
+        this.personPassoword = PersonPassoword;
     }
-    public Long getId() {
-        return id;
+    public Long getPersonId() {
+        return personId;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setPersonId(Long id) {
+        this.personId = id;
     }
-    public String getUsername() {
-        return username;
+    public String getPersonLogin() {return personLogin;}
+    public void setPersonLogin(String username) {this.personLogin = username; }
+    public String getPersonPassoword() {
+        return personPassoword;
     }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPersonPassoword(String password) {
+        this.personPassoword = password;
     }
 }

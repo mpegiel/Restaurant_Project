@@ -10,7 +10,6 @@ import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.service.UserService;
 
 import java.util.Objects;
-import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -28,7 +27,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user ) {
 
-        Optional<User> oauthUser = userService.login(user.getUsername(), user.getPassword() );
+        User oauthUser = userService.login(user.getPersonLogin(), user.getPersonPassoword() );
         System.out.print(oauthUser);
         if(Objects.nonNull(oauthUser)) {
             return "redirect:/";
@@ -37,6 +36,4 @@ public class UserController {
             return "redirect:/login";
         }
     }
-
-
 }
