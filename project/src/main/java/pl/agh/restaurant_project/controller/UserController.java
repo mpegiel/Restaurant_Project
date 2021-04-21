@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user ) {
 
-        User oauthUser = userService.login(user.getPersonLogin(), user.getPersonPassoword() );
+        User oauthUser = userService.login(user.getPersonLogin(), user.getPersonPassword() );
         System.out.print(oauthUser);
         if(Objects.nonNull(oauthUser)) {
             return "redirect:/";
