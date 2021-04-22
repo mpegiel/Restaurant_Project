@@ -2,11 +2,10 @@ package pl.agh.restaurant_project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.agh.restaurant_project.domain.User;
+import pl.agh.restaurant_project.repository.UserRepository;
 import pl.agh.restaurant_project.service.UserService;
 
 import java.util.Objects;
@@ -16,6 +15,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    private UserRepository userRepo;
+
+    public UserController(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @GetMapping("/login")
     public ModelAndView login() {
@@ -35,5 +39,12 @@ public class UserController {
         else {
             return "redirect:/login";
         }
+    }
+
+    @RequestMapping(value = "users/all", method = RequestMethod.GET)
+    public ModelAndView users() {
+        ModelAndView mav = new ModelAndView("users/all");
+        mav.addObject("users", userRepo.findAll());
+        return mav;
     }
 }
