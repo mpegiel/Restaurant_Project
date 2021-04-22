@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create New Emloyee</h1>
+<br />
+<form action="#" th:action="@{/menusave}" th:object="${meal}"
+      method="post">
+  <table border="0" cellpadding="10">
+    <tr>
+      <td>Name Of Meal:</td>
+      <td><input type="text" th:field="*{nameOfMeal}" /></td>
+    </tr>
+    <tr>
+      <td>Age:</td>
+      <td><input type="text" th:field="*{price}" /></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><button type="submit">Save</button></td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+</html>
