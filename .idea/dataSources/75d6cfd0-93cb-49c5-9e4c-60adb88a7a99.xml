@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="the_pierogi@pierogi.database.windows.net">
+  <database-model serializer="dbm" dbms="AZURE" family-id="AZURE" format-version="4.21">
+    <root id="1">
+      <ServerVersion>12.0.2000</ServerVersion>
+      <Dbms>AZURE</Dbms>
+    </root>
+    <database id="2" parent="1" name="master">
+      <ObjectId>1</ObjectId>
+    </database>
+    <database id="3" parent="1" name="the_pierogi">
+      <ObjectId>5</ObjectId>
+      <PermissionsCheckSum>1059020366</PermissionsCheckSum>
+      <Grants>5|database||1|connect|G</Grants>
+      <Current>1</Current>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+      <Fingerprint>5.44303/C46CD4C1-3156-4501-BC09-A5C3AA508F0C@pierogi</Fingerprint>
+    </database>
+    <login id="4" parent="1" name="##MS_ServerStateReader##">
+      <ObjectId>11</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="5" parent="1" name="##MS_ServerStateManager##">
+      <ObjectId>12</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="6" parent="1" name="##MS_DefinitionReader##">
+      <ObjectId>13</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <schema id="7" parent="3" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+    </schema>
+    <schema id="8" parent="3" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+    </schema>
+    <schema id="9" parent="3" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+    </schema>
+    <schema id="10" parent="3" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+    </schema>
+    <schema id="11" parent="3" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+    </schema>
+    <schema id="12" parent="3" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+    </schema>
+    <schema id="13" parent="3" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+    </schema>
+    <schema id="14" parent="3" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+    </schema>
+    <schema id="15" parent="3" name="db_owner">
+      <ObjectId>16384</ObjectId>
+    </schema>
+    <schema id="16" parent="3" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+    </schema>
+    <schema id="17" parent="3" name="dbo">
+      <ObjectId>1</ObjectId>
+      <IntrospectionTimestamp>2021-04-22.21:43:03.050</IntrospectionTimestamp>
+      <Current>1</Current>
+    </schema>
+    <schema id="18" parent="3" name="guest">
+      <ObjectId>2</ObjectId>
+    </schema>
+    <schema id="19" parent="3" name="sys">
+      <ObjectId>4</ObjectId>
+    </schema>
+    <role id="20" parent="3" name="public">
+      <ObjectId>0</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="21" parent="3" name="dbo">
+      <ObjectId>1</ObjectId>
+      <DefaultSchema>dbo</DefaultSchema>
+      <AuthType>instance</AuthType>
+    </role>
+    <role id="22" parent="3" name="guest">
+      <ObjectId>2</ObjectId>
+      <DefaultSchema>guest</DefaultSchema>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="23" parent="3" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="24" parent="3" name="sys">
+      <ObjectId>4</ObjectId>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="25" parent="3" name="db_owner">
+      <ObjectId>16384</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="26" parent="3" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="27" parent="3" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="28" parent="3" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="29" parent="3" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="30" parent="3" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="31" parent="3" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="32" parent="3" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="33" parent="3" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <table id="34" parent="17" name="event">
+      <ObjectId>1559676604</ObjectId>
+      <CreatedTimestamp>2021-04-22.21:37:44.603</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-22.21:37:44.603</ModifiedTimestamp>
+    </table>
+    <table id="35" parent="17" name="menu">
+      <ObjectId>1591676718</ObjectId>
+      <CreatedTimestamp>2021-04-22.21:37:44.647</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-22.21:37:44.647</ModifiedTimestamp>
+    </table>
+    <table id="36" parent="17" name="person">
+      <ObjectId>1495676376</ObjectId>
+      <CreatedTimestamp>2021-04-22.21:35:14.890</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-22.21:37:44.417</ModifiedTimestamp>
+    </table>
+    <sequence id="37" parent="17" name="hibernate_sequence">
+      <ObjectId>1543676547</ObjectId>
+      <Outdated>1</Outdated>
+      <CreatedTimestamp>2021-04-22.21:37:44.563</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-22.21:37:44.563</ModifiedTimestamp>
+      <DataType>bigint|0s</DataType>
+      <UnderlyingDataType>bigint|0s</UnderlyingDataType>
+      <SequenceIdentity>-9223372036854775808(2)..9223372036854775807</SequenceIdentity>
+    </sequence>
+    <column id="38" parent="34" name="id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="34" name="color">
+      <Position>2</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="40" parent="34" name="end_time">
+      <Position>3</Position>
+      <DataType>datetime2|0s</DataType>
+    </column>
+    <column id="41" parent="34" name="start_time">
+      <Position>4</Position>
+      <DataType>datetime2|0s</DataType>
+    </column>
+    <column id="42" parent="34" name="text">
+      <Position>5</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="43" parent="34" name="user_person_id">
+      <Position>6</Position>
+      <DataType>bigint|0s</DataType>
+    </column>
+    <index id="44" parent="34" name="PK__event__3213E83F1299EE8A">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="45" parent="34" name="PK__event__3213E83F1299EE8A">
+      <ObjectId>1575676661</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-22.21:37:44.603</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-22.21:37:44.603</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK__event__3213E83F1299EE8A</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="35" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="35" name="name_of_meal">
+      <Position>2</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="48" parent="35" name="price">
+      <Position>3</Position>
+      <DataType>float|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="49" parent="35" name="PK__menu__3213E83F9D72945C">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="50" parent="35" name="PK__menu__3213E83F9D72945C">
+      <ObjectId>1607676775</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-22.21:37:44.647</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-22.21:37:44.647</ModifiedTimestamp>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>PK__menu__3213E83F9D72945C</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="36" name="person_id">
+      <Position>1</Position>
+      <SequenceIdentity>1(3)</SequenceIdentity>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="36" name="person_email">
+      <Position>2</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="53" parent="36" name="person_login">
+      <Position>3</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="54" parent="36" name="person_name">
+      <Position>4</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="55" parent="36" name="person_password">
+      <Position>5</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="56" parent="36" name="person_salary">
+      <Position>6</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <column id="57" parent="36" name="person_surname">
+      <Position>7</Position>
+      <DataType>varchar(255 char)|0s</DataType>
+    </column>
+    <index id="58" parent="36" name="PK__person__543848DF28CC280F">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>person_id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="59" parent="36" name="PK__person__543848DF28CC280F">
+      <ObjectId>1511676433</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-22.21:35:14.890</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-22.21:35:14.890</ModifiedTimestamp>
+      <ColNames>person_id</ColNames>
+      <UnderlyingIndexName>PK__person__543848DF28CC280F</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

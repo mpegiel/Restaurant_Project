@@ -144,15 +144,21 @@
     <tr>
         <th> Email  </th>
         <th> Password </th>
+        <th> Name </th>
+        <th> Surname </th>
+        <th> Salary </th>
     </tr>
     </thead>
     <tbody>
     <tr th:if="${users.empty}">
-        <td colspan="2"> No Users Available </td>
+        <td colspan="5"> No Users Available </td>
     </tr>
     <tr th:each="user : ${users}">
-        <td><span th:text="${user.personEmail}"> Nazwa  </span></td>
+        <td><span th:text="${user.personEmail}"> Nazwa </span></td>
         <td><span th:text="${user.personPassword}"> Cena </span></td>
+        <td><span th:text="${user.personName}"> Imie </span></td>
+        <td><span th:text="${user.personSurname}"> Nazwisko </span></td>
+        <td><span th:text="${user.personSalary}"> Pensja </span></td>
     </tr>
     </tbody>
 </table>

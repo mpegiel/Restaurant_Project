@@ -6,19 +6,33 @@ import pl.agh.restaurant_project.domain.Menu;
 import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository repo;
+    private UserRepository userRepo;
 
     public User login(String PersonLogin, String PersonPassword) {
-        return repo.findByPersonLoginAndPersonPassword(PersonLogin, PersonPassword);
+        return userRepo.findByPersonLoginAndPersonPassword(PersonLogin, PersonPassword);
     }
 
-    public User save(User user) {
-        return repo.save(user);
+    public List<User> listAll() {
+
+        return userRepo.findAll();
+    }
+
+    public void save(User user) {
+        userRepo.save(user);
+    }
+
+    public User get(Long id) {
+        return userRepo.findById(id).get();
+    }
+
+    public void delete(long id) {
+        userRepo.deleteById(id);
     }
 }

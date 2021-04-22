@@ -128,6 +128,11 @@
             <version>9.2.1.jre15</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.12.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
