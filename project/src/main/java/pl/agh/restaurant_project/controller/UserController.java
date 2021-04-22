@@ -2,8 +2,11 @@ package pl.agh.restaurant_project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.agh.restaurant_project.domain.Menu;
 import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.UserRepository;
 import pl.agh.restaurant_project.service.UserService;
@@ -46,5 +49,20 @@ public class UserController {
         ModelAndView mav = new ModelAndView("users/all");
         mav.addObject("users", userRepo.findAll());
         return mav;
+    }
+
+    @RequestMapping("/users/create")
+    public String showNewUserPage(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "users/create";
+    }
+
+    @RequestMapping(value = "/usersave", method = RequestMethod.POST)
+    public String saveUser(@ModelAttribute("user") User user, Model model, BindingResult result) {
+        userService.save(user);
+
+        model.addAttribute("menus", userRepo.findAll() );
+        return "redirect:users/all";
     }
 }

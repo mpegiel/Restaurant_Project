@@ -10,6 +10,7 @@ public class User {
     private Long personId;
     private String personLogin;
     private String personPassword;
+    private String personEmail;
     private String personName;
     private String personSurname;
     private String personSalary;
@@ -17,11 +18,12 @@ public class User {
     public User () {
 
     }
-    public User(Long PersonId, String PersonUsername, String PersonPassword, String PersonName,
+    public User(Long PersonId, String PersonUsername, String PersonPassword, String PersonEmail, String PersonName,
     String PersonSurname, String PersonSalary) {
         this.personId = PersonId;
         this.personLogin = PersonUsername;
         this.personPassword = PersonPassword;
+        this.personEmail = PersonEmail;
         this.personName = PersonName;
         this.personSurname = PersonSurname;
         this.personSalary = PersonSalary;
@@ -50,4 +52,10 @@ public class User {
     public void setPersonSalary(String personSalary) {
         this.personSalary = personSalary;
     }
+    public String getPersonEmail() { return personEmail; }
+    public void setPersonEmail(String personEmail) { this.personEmail = personEmail; }
+    public String getPersonName() { return personName; }
+    public void setPersonName(String personName) { this.personName = personName; }
+    public String getPersonSurname() { return personSurname; }
+    public void setPersonSurname(String personSurname) { this.personSurname = personSurname; }
 }
