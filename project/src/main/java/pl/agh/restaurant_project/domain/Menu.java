@@ -14,7 +14,7 @@ public class Menu {
     private String nameOfMeal;
     private double price;
 
-    protected Menu() {}
+    public Menu() {}
 
     public Menu(String nameOfMeal, double price) {
         this.nameOfMeal = nameOfMeal;
