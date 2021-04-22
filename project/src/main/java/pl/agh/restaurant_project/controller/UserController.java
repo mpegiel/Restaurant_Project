@@ -62,7 +62,7 @@ public class UserController {
     public String saveUser(@ModelAttribute("user") User user, Model model, BindingResult result) {
         userService.save(user);
 
-        model.addAttribute("menus", userRepo.findAll() );
+        model.addAttribute("users", userRepo.findAll() );
         return "redirect:users/all";
     }
 }
