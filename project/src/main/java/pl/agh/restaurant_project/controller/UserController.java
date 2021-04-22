@@ -12,6 +12,7 @@ import pl.agh.restaurant_project.repository.UserRepository;
 import pl.agh.restaurant_project.service.UserService;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -61,6 +62,31 @@ public class UserController {
     @RequestMapping(value = "/usersave", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user, Model model, BindingResult result) {
         userService.save(user);
+
+        model.addAttribute("users", userRepo.findAll() );
+        return "redirect:users/all";
+    }
+
+    @RequestMapping("/users/edit/{id}")
+    public String editEmployeeById(Model model, @PathVariable("id") Optional<Long> id) {
+        if (id.isPresent()) {
+            User user = userService.get(id.get());
+            model.addAttribute("user", user);
+        }
+
+        return "/users/edit";
+    }
+
+    @RequestMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable(name = "id") int id) {
+        userService.delete(id);
+        return "redirect:/users/all";
+    }
+
+    @RequestMapping(path = "/updateUser", method = RequestMethod.POST)
+    public String updateUser(@ModelAttribute("user") User user, Model model, BindingResult result)
+    {
+        userService.update(user);
 
         model.addAttribute("users", userRepo.findAll() );
         return "redirect:users/all";

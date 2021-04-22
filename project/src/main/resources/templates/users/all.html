@@ -159,6 +159,12 @@
         <td><span th:text="${user.personName}"> Imie </span></td>
         <td><span th:text="${user.personSurname}"> Nazwisko </span></td>
         <td><span th:text="${user.personSalary}"> Pensja </span></td>
+        <td>
+            <a th:href="@{/users/edit/{id}(id=${user.personId})}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/users/delete/{id}(id=${user.personId})}">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>

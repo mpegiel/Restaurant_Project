@@ -2,7 +2,6 @@ package pl.agh.restaurant_project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.agh.restaurant_project.domain.Menu;
 import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.UserRepository;
 
@@ -34,5 +33,16 @@ public class UserService {
 
     public void delete(long id) {
         userRepo.deleteById(id);
+    }
+
+    public User update(User user)
+    {
+        Optional<User> usr = userRepo.findById(user.getPersonId());
+        User newUser = usr.get();
+        newUser.setPersonEmail(user.getPersonEmail());
+        newUser.setPersonName(user.getPersonName());
+        newUser.setPersonSurname(user.getPersonSurname());
+        newUser.setPersonSalary(user.getPersonSalary());
+        return userRepo.save(newUser);
     }
 }
