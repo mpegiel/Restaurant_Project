@@ -140,7 +140,7 @@
     <h3>Edit user</h3>
 </div>
 <br />
-<form action="#" th:action="@{/updateUser}" th:object="${user}"
+<form action="#" th:action="@{/userupdate/{id}(id=${userID})}" th:object="${user}"
       method="post">
     <table class="table-fill">
         <tr>

@@ -142,10 +142,11 @@
 <table class="table-fill">
     <thead>
     <tr>
-        <th> Email  </th>
+        <th> ID  </th>
+        <th> First name  </th>
+        <th> Last name  </th>
+        <th> E-mail  </th>
         <th> Password </th>
-        <th> Name </th>
-        <th> Surname </th>
         <th> Salary </th>
     </tr>
     </thead>
@@ -154,10 +155,11 @@
         <td colspan="5"> No Users Available </td>
     </tr>
     <tr th:each="user : ${users}">
+        <td><span th:text="${user.personId}"> ID </span></td>
+        <td><span th:text="${user.firstName}"> Imie </span></td>
+        <td><span th:text="${user.personSurname}"> Nazwisko </span></td>
         <td><span th:text="${user.personEmail}"> Nazwa </span></td>
         <td><span th:text="${user.personPassword}"> Cena </span></td>
-        <td><span th:text="${user.personName}"> Imie </span></td>
-        <td><span th:text="${user.personSurname}"> Nazwisko </span></td>
         <td><span th:text="${user.personSalary}"> Pensja </span></td>
         <td>
             <a th:href="@{/users/edit/{id}(id=${user.personId})}">Edit</a>

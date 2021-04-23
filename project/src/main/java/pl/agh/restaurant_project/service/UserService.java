@@ -14,12 +14,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    public User login(String PersonLogin, String PersonPassword) {
-        return userRepo.findByPersonLoginAndPersonPassword(PersonLogin, PersonPassword);
+    public User login(String Username, String PersonPassword) {
+        return userRepo.findByUsernameAndPersonPassword(Username, PersonPassword);
     }
 
     public List<User> listAll() {
-
         return userRepo.findAll();
     }
 
@@ -35,14 +34,15 @@ public class UserService {
         userRepo.deleteById(id);
     }
 
-    public User update(User user)
-    {
-        Optional<User> usr = userRepo.findById(user.getPersonId());
-        User newUser = usr.get();
-        newUser.setPersonEmail(user.getPersonEmail());
-        newUser.setPersonName(user.getPersonName());
-        newUser.setPersonSurname(user.getPersonSurname());
-        newUser.setPersonSalary(user.getPersonSalary());
-        return userRepo.save(newUser);
+    public User update(Long ID, User updatedUser) {
+        Optional<User> optUser = userRepo.findById(ID);
+
+        if (optUser.isPresent()) {
+            User user = optUser.get();
+            user.setPersonEmail(updatedUser.getPersonEmail());
+            user.setPersonPassword(updatedUser.getPersonPassword());
+            return userRepo.save(user);
+        }
+        return null;
     }
 }
