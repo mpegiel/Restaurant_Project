@@ -43,6 +43,12 @@ public class UserController {
         }
     }
 
+    @GetMapping("/logout")
+    public String logout()
+    {
+        return "login";
+    }
+
     @RequestMapping(value = "users/all", method = RequestMethod.GET)
     public ModelAndView users() {
         ModelAndView mav = new ModelAndView("users/all");
