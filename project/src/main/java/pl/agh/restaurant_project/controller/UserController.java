@@ -33,7 +33,6 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user ) {
-
         User oauthUser = userService.login(user.getUsername(), user.getPersonPassword() );
         System.out.print(oauthUser);
         if(Objects.nonNull(oauthUser)) {
