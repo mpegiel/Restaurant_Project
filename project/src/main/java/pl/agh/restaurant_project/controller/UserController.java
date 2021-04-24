@@ -48,6 +48,11 @@ public class UserController {
     {
         return "login";
     }
+    @RequestMapping("/passwordRestoring")
+    public String reset_password()
+    {
+        return "passwordRestoring";
+    }
 
     @RequestMapping(value = "users/all", method = RequestMethod.GET)
     public ModelAndView users() {
