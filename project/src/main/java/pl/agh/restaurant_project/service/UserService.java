@@ -1,14 +1,19 @@
 package pl.agh.restaurant_project.service;
 
+import org.apache.commons.codec.StringEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
@@ -16,6 +21,30 @@ public class UserService {
 
     public User login(String Username, String PersonPassword) {
         return userRepo.findByUsernameAndPersonPassword(Username, PersonPassword);
+    }
+
+    public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException{
+        User user = userRepo.findByEmail(email);
+        if (user!=null){
+            user.setResetPasswordToken(token);
+            userRepo.save(user);
+        }
+        else {
+            throw new UsernameNotFoundException("Could not find any customer with the email " + email);
+        }
+    }
+
+    public User getByResetPasswordToken(String token){
+        return userRepo.findByResetPasswordToken(token);
+    }
+
+    public void updatePassword(User user, String newPassword){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPersonPassword(encodedPassword);
+
+        user.setResetPasswordToken(null);
+        userRepo.save(user);
     }
 
     public List<User> listAll() {

@@ -14,6 +14,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/passwordRestoring").permitAll()
+                .antMatchers("/changeofpassword").permitAll()
+                .antMatchers("/reset_password_form").permitAll()
+                .antMatchers("/reset_password").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

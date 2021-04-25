@@ -14,6 +14,7 @@ public class User {
     private String firstName;
     private String personSurname;
     private String personSalary;
+    private String resetPasswordToken;
 
     public User () {
 
@@ -28,6 +29,8 @@ public class User {
         this.personSurname = PersonSurname;
         this.personSalary = PersonSalary;
     }
+
+
     public Long getPersonId() {
         return personId;
     }
@@ -54,8 +57,10 @@ public class User {
     }
     public String getPersonEmail() { return personEmail; }
     public void setPersonEmail(String personEmail) { this.personEmail = personEmail; }
+    public void setResetPasswordToken(String token) {this.resetPasswordToken = token;}
     public String getFirstName() { return firstName; }
     public void setFirstName(String personName) { this.firstName = personName; }
     public String getPersonSurname() { return personSurname; }
     public void setPersonSurname(String personSurname) { this.personSurname = personSurname; }
+
 }

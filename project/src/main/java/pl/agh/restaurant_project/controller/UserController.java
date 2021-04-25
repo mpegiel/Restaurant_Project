@@ -10,8 +10,10 @@ import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.UserRepository;
 import pl.agh.restaurant_project.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 import java.util.Optional;
+
 
 @Controller
 public class UserController {
@@ -47,11 +49,6 @@ public class UserController {
     public String logout()
     {
         return "login";
-    }
-    @RequestMapping("/passwordRestoring")
-    public String reset_password()
-    {
-        return "passwordRestoring";
     }
 
     @RequestMapping(value = "users/all", method = RequestMethod.GET)
