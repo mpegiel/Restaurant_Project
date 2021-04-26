@@ -144,12 +144,33 @@
       method="post">
     <table class="table-fill">
         <tr>
+            <td>First name:</td>
+            <td><input type="text" th:field="*{firstName}" /></td>
+        </tr>
+
+        <tr>
+            <td>Last name:</td>
+            <td><input type="text" th:field="*{personSurname}" /></td>
+        </tr>
+
+        <tr>
             <td>E-mail:</td>
             <td><input type="text" th:field="*{personEmail}" /></td>
         </tr>
+
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" th:field="*{username}" /></td>
+        </tr>
+
         <tr>
             <td>Password:</td>
             <td><input type="text" th:field="*{personPassword}" /></td>
+        </tr>
+
+        <tr>
+            <td>Salary:</td>
+            <td><input type="text" th:field="*{personSalary}" /></td>
         </tr>
 
         <tr>

@@ -68,8 +68,12 @@ public class UserService {
 
         if (optUser.isPresent()) {
             User user = optUser.get();
+            user.setFirstName(updatedUser.getFirstName());
+            user.setPersonSurname(updatedUser.getPersonSurname());
             user.setPersonEmail(updatedUser.getPersonEmail());
+            user.setUsername(updatedUser.getUsername());
             user.setPersonPassword(updatedUser.getPersonPassword());
+            user.setPersonSalary(updatedUser.getPersonSalary());
             return userRepo.save(user);
         }
         return null;
