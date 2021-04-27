@@ -124,7 +124,11 @@
       text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
       border-right: 1px solid #C1C3D1;
     }
+  td a{
+    text-decoration: none;
+    color: #ff7200;
 
+  }
     td:last-child {
       border-right: 0px;
     }
@@ -144,6 +148,7 @@
   <tr>
     <th> Nazwa  </th>
     <th> Cena </th>
+    <th> Usuń</th>
   </tr>
   </thead>
   <tbody>
@@ -154,7 +159,7 @@
     <td><span th:text="${menu.nameOfMeal}"> Nazwa  </span></td>
     <td><span th:text="${menu.price}"> Cena </span></td>
     <td>
-      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Delete</a>
+      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Usuń</a>
     </td>
   </tr>
   </tbody>
