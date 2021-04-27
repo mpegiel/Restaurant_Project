@@ -153,6 +153,9 @@
   <tr th:each="menu : ${menus}">
     <td><span th:text="${menu.nameOfMeal}"> Nazwa  </span></td>
     <td><span th:text="${menu.price}"> Cena </span></td>
+    <td>
+      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Delete</a>
+    </td>
   </tr>
   </tbody>
 </table>

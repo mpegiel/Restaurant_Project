@@ -45,7 +45,11 @@ public class MenuController {
         model.addAttribute("menus", repository.findAll() );
         return "redirect:menu/all";
     }
-
+    @RequestMapping("/menu/delete/{id}")
+    public String deleteUser(@PathVariable(name = "id") int id) {
+       menuService.delete(id);
+        return "redirect:/menu/all";
+    }
 
 
 }
