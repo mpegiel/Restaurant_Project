@@ -26,5 +26,20 @@ public class MenuService {
     public void delete(long id) {
         menuRepository.deleteById(id);
     }
+    public Menu get(Long id) {
+        return menuRepository.findById(id).get();
+    }
+    public Menu update(Long ID,  Menu updatedMeal) {
+        Optional<Menu> optionalMenu = menuRepository.findById(ID);
+
+        if (optionalMenu.isPresent()) {
+            Menu menu = optionalMenu.get();
+            menu.setNameOfMeal(updatedMeal.getNameOfMeal());
+            menu.setPrice(updatedMeal.getPrice());
+
+            return menuRepository.save(menu);
+        }
+        return null;
+    }
 
 }

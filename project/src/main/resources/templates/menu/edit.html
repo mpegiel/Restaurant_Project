@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <style>
 
     body {
@@ -124,11 +123,7 @@
       text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
       border-right: 1px solid #C1C3D1;
     }
-  td a{
-    text-decoration: none;
-    color: #ff7200;
 
-  }
     td:last-child {
       border-right: 0px;
     }
@@ -136,42 +131,32 @@
 
   </style>
   <meta charset="UTF-8">
-  <title>Menu</title>
+  <title>Add Meal</title>
+  <meta charset="utf-8">
 
 </head>
 <body>
 <div class="table-title">
-  <h3>Menu</h3>
+  <h3>Edytuj pozycję</h3>
 </div>
-<table class="table-fill">
-  <thead>
-  <tr>
-    <th> Nazwa  </th>
-    <th> Cena </th>
-    <th> Usuń</th>
-    <th> Edycja</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:if="${menus.empty}">
-    <td colspan="2"> No Meals Available </td>
-  </tr>
-  <tr th:each="menu : ${menus}">
-    <td><span th:text="${menu.nameOfMeal}"> Nazwa  </span></td>
-    <td><span th:text="${menu.price}"> Cena </span></td>
-    <td>
-      <a th:href="@{/menu/edit/{id}(id=${menu.id})}">Edit</a>
-    </td>
-    <td>
-      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Usuń</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<div class="table-link" >
-  <a   href="/menu/create">Dodaj pozycję</a> <br />
+<br />
+<form action="#" th:action="@{/menuupdate/{id}(id=${mealId})}" th:object="${meal}"
+      method="post">
+  <table class="table-fill">
+    <tr>
+      <td>Nazwa:</td>
+      <td><input type="text" th:field="*{nameOfMeal}" /></td>
+    </tr>
+    <tr>
+      <td>Cena:</td>
+      <td><input type="text" th:field="*{price}" /></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><button class="submit_btn_table" type="submit">Save</button></td>
+    </tr>
+  </table>
+</form>
 </div>
 </body>
 </html>
-
-

@@ -1,5 +1,6 @@
 package pl.agh.restaurant_project.controller;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import pl.agh.restaurant_project.domain.Menu;
+import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.MenuRepository;
 import pl.agh.restaurant_project.service.MenuService;
 
@@ -50,6 +52,24 @@ public class MenuController {
        menuService.delete(id);
         return "redirect:/menu/all";
     }
+    @RequestMapping(path = "/menuupdate/{id}", method = RequestMethod.POST)
+    public String updateUser(@PathVariable("id") Optional<Long> id, @ModelAttribute("meal") Menu menu, Model model, BindingResult result) {
+        if (id.isPresent()) {
+            menuService.update(id.get(), menu);
+        }
 
+        model.addAttribute("menus", repository.findAll() );
+        return "redirect:/menu1/all";
+    }
+    @RequestMapping("/menu/edit/{id}")
+    public String editMealById(Model model, @PathVariable("id") Optional<Long> id) {
+        if (id.isPresent()) {
+            Menu meal = menuService.get(id.get());
+            model.addAttribute("meal", meal);
+            model.addAttribute("mealId", id.get());
+        }
+
+        return "/menu/edit";
+    }
 
 }
