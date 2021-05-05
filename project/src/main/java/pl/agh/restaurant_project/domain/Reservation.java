@@ -18,8 +18,8 @@ public class Reservation {
 
     public Reservation() {}
 
-    public Reservation(int table, String date, String personData, String telephoneNumber) {
-        this.tableNumber = table;
+    public Reservation(int tableNumber, String date, String personData, String telephoneNumber) {
+        this.tableNumber = tableNumber;
         this.date = date;
         this.personData = personData;
         this.telephoneNumber = telephoneNumber;
