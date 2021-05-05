@@ -23,11 +23,11 @@ public class ReservationService {
     public void delete(long id) {
         reservationRepository.deleteById(id);
     }
-    public Reservation get(Long id) {
+    public Reservation get(long id) {
         return reservationRepository.findById(id).get();
     }
-    public Reservation update(Long ID,  Reservation updatedReservation) {
-        Optional<Reservation> optionalReservation = reservationRepository.findById(ID);
+    public Reservation update(long id,  Reservation updatedReservation) {
+        Optional<Reservation> optionalReservation = reservationRepository.findById(id);
 
         if (optionalReservation.isPresent()) {
             Reservation reservation = optionalReservation.get();
