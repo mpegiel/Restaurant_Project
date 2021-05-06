@@ -23,6 +23,10 @@ public class Warehouse {
         this.amount = amount;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setAmount(int amount) {
         this.amount = amount;
     }

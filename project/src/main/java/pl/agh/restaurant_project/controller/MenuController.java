@@ -59,7 +59,7 @@ public class MenuController {
         }
 
         model.addAttribute("menus", repository.findAll() );
-        return "redirect:/menu1/all";
+        return "redirect:/menu/all";
     }
     @RequestMapping("/menu/edit/{id}")
     public String editMealById(Model model, @PathVariable("id") Optional<Long> id) {

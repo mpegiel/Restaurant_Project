@@ -39,10 +39,7 @@ public class UserService {
     }
 
     public void updatePassword(User user, String newPassword){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(newPassword);
-        user.setPersonPassword(encodedPassword);
-
+        user.setPersonPassword(newPassword);
         user.setResetPasswordToken(null);
         userRepo.save(user);
     }
