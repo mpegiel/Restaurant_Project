@@ -18,9 +18,10 @@ public class Warehouse {
     public Warehouse() {
     }
 
-    public Warehouse(String nameOfProduct, int amount) {
+    public Warehouse(String nameOfProduct, int amount, boolean toOrder) {
         this.nameOfProduct = nameOfProduct;
         this.amount = amount;
+        this.toOrder = toOrder;
     }
 
     public Long getId() {

@@ -2,7 +2,6 @@ package pl.agh.restaurant_project.controller;
 
 import jdk.jshell.execution.Util;
 import net.bytebuddy.utility.RandomString;
-import org.h2.engine.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSender;
