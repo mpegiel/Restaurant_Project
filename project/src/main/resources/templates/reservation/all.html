@@ -142,11 +142,10 @@
 <table class="table-fill">
     <thead>
     <tr>
-        <th> ID  </th>
         <th> Table  </th>
         <th> Date  </th>
         <th> Person Data  </th>
-        <th> Telephone no. </th>
+        <th> Phone number </th>
     </tr>
     </thead>
     <tbody>
@@ -154,7 +153,6 @@
         <td colspan="5"> No Reservations added. </td>
     </tr>
     <tr th:each="reservation: ${reservations}">
-        <td><span th:text="${reservation.id}"> ID </span></td>
         <td><span th:text="${reservation.tableNumber}"> Table </span></td>
         <td><span th:text="${reservation.date}"> Date </span></td>
         <td><span th:text="${reservation.personData}"> Person Data </span></td>
