@@ -1,0 +1,100 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .navbar-header ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style-type: none
+        }
+
+        .navbar-header li {
+            display: flex;
+            justify-content: center;
+            height: 1em;
+            width: 5em;
+            margin: 2em;
+            font-family: "Roboto", helvetica, arial, sans-serif;
+            border: 3px solid #ff7200;
+            box-shadow: 0 8px 4px -6px darkgrey;
+            border-radius: 20px;
+            padding: 5em;
+        ;
+        }
+
+        .navbar-header a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .nav a:hover {
+            color: #ff7200;
+        }
+
+        .users a {
+            font-family: "Roboto", helvetica, arial, sans-serif;
+            display: block;
+            color: #ff7200;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .users a::after {
+            content: "";
+            background: white;
+            mix-blend-mode: exclusion;
+            width: calc(100% + 20px);
+            height: 0;
+            position: absolute;
+            bottom: -4px;
+            left: -10px;
+            transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+
+        .users :hover::after {
+            height: calc(100% + 8px)
+        }
+    </style>
+</head>
+
+<body>
+<div class="users">
+    <a th:href="@{/logout}">Logout</a>
+</div>
+<div class="navbar-header">
+
+    <ul class="nav">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="/api/events">GRAFIK</a></li>
+        <li><a href="/reservation/all">REZERWACJE</a></li>
+        <li><a href="/warehouse/all">MAGAZYN</a></li>
+        <li><a href="/menu/all">MENU</a></li>
+        <li><a href="/users/all">PRACOWNICY</a></li>
+
+
+
+    </ul>
+
+
+</div>
+
+</header>
+
+<!--End of header -->
+
+
+
+
+
+
+</body>
+
+</html>
