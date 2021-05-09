@@ -25,8 +25,8 @@ jobs:
     - name: Maven
       uses: actions/cache@v2
       with:
-      path: ~/.m2
-      key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      restore-keys: ${{ runner.os }}-m2
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
     - name: Run Maven tests
       run: mvn --batch-mode --update-snapshots verify
