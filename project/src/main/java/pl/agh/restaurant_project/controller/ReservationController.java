@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pl.agh.restaurant_project.domain.Reservation;
+import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.ReservationRepository;
 import pl.agh.restaurant_project.service.ReservationService;
+
+import java.util.Optional;
 
 @Controller
 public class ReservationController {
@@ -44,6 +47,27 @@ public class ReservationController {
         reservationService.save(reservation);
         model.addAttribute("reservations", reservationRepo.findAll() );
         return "redirect:reservation/all";
+    }
+
+    @RequestMapping(path = "/reservationupdate/{id}", method = RequestMethod.POST)
+    public String updateUser(@PathVariable("id") Optional<Long> id, @ModelAttribute("reservation") Reservation reservation, Model model, BindingResult result) {
+        if (id.isPresent()) {
+            reservationService.update(id.get(), reservation);
+        }
+
+        model.addAttribute("reservations", reservationRepo.findAll() );
+        return "redirect:/reservation/all";
+    }
+
+    @RequestMapping("/reservation/edit/{id}")
+    public String editReservationById(Model model, @PathVariable("id") Optional<Long> id) {
+        if (id.isPresent()) {
+            Reservation reservation = reservationService.get(id.get());
+            model.addAttribute("reservation", reservation);
+            model.addAttribute("reservationID", id.get());
+        }
+
+        return "/reservation/edit";
     }
 
     @RequestMapping("/reservation/delete/{id}")

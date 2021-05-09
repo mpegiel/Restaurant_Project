@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <style>
-
         body {
-
             font-family: "Roboto", helvetica, arial, sans-serif;
             font-size: 16px;
             font-weight: 400;
@@ -132,42 +129,43 @@
 
     </style>
     <meta charset="UTF-8">
-    <title>Reservations</title>
+    <title>Edit Reservation</title>
+    <meta charset="utf-8">
 
 </head>
 <body>
 <div class="table-title">
-    <h3>Reservations</h3>
+    <h3>Edit reservation</h3>
 </div>
-<table class="table-fill">
-    <thead>
-    <tr>
-        <th> Table  </th>
-        <th> Date  </th>
-        <th> Person Data  </th>
-        <th> Phone number </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${reservations.empty}">
-        <td colspan="5"> No Reservations added. </td>
-    </tr>
-    <tr th:each="reservation: ${reservations}">
-        <td><span th:text="${reservation.tableNumber}"> Table </span></td>
-        <td><span th:text="${reservation.date}"> Date </span></td>
-        <td><span th:text="${reservation.personData}"> Person Data </span></td>
-        <td><span th:text="${reservation.telephoneNumber}"> Telephone no. </span></td>
-        <td>
-            <a th:href="@{/reservation/edit/{id}(id=${reservation.id})}">Edit</a>
-        </td>
-        <td>
-            <a th:href="@{/reservation/delete/{id}(id=${reservation.id})}">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<div class="table-link" >
-    <a   href="/reservation/create">Add new reservation</a> <br />
+<br />
+<form action="#" th:action="@{/reservationupdate/{id}(id=${reservationID})}" th:object="${reservation}"
+      method="post">
+    <table class="table-fill">
+        <tr>
+            <td>Table:</td>
+            <td><input type="text" th:field="*{tableNumber}" /></td>
+        </tr>
+
+        <tr>
+            <td>Date:</td>
+            <td><input type="text" th:field="*{date}" /></td>
+        </tr>
+
+        <tr>
+            <td>Person Data:</td>
+            <td><input type="text" th:field="*{personData}" /></td>
+        </tr>
+
+        <tr>
+            <td>Telephone Number:</td>
+            <td><input type="text" th:field="*{telephoneNumber}" /></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><button class="submit_btn_table" type="submit">Save</button></td>
+        </tr>
+    </table>
+</form>
 </div>
 </body>
 </html>
