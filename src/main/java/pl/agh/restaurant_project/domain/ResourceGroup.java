@@ -1,4 +1,4 @@
-package org.daypilot.demo.machinescheduling.domain;
+package pl.agh.restaurant_project.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

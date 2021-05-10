@@ -1,15 +1,14 @@
-package org.daypilot.demo.machinescheduling.controller;
+package pl.agh.restaurant_project.controller;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import org.daypilot.demo.machinescheduling.domain.Event;
-import org.daypilot.demo.machinescheduling.domain.Link;
-import org.daypilot.demo.machinescheduling.domain.Resource;
-import org.daypilot.demo.machinescheduling.domain.ResourceGroup;
-import org.daypilot.demo.machinescheduling.repository.EventRepository;
-import org.daypilot.demo.machinescheduling.repository.LinkRepository;
-import org.daypilot.demo.machinescheduling.repository.ResourceGroupRepository;
-import org.daypilot.demo.machinescheduling.repository.ResourceRepository;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+import pl.agh.restaurant_project.domain.*;
+import pl.agh.restaurant_project.repository.EventRepository;
+import pl.agh.restaurant_project.repository.LinkRepository;
+import pl.agh.restaurant_project.repository.ResourceGroupRepository;
+import pl.agh.restaurant_project.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -35,10 +34,11 @@ public class SchedulerController {
     @Autowired
     LinkRepository lr;
 
-    @RequestMapping("/api")
-    @ResponseBody
-    String home() {
-        return "Welcome!";
+    @RequestMapping("/scheduler")
+    public ModelAndView index () {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("scheduler/harmonogram");
+        return modelAndView;
     }
 
     @RequestMapping("/api/resources")

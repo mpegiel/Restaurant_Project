@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="header">
-    <h1>Harmonogram pracy</h1>
+    <h1>Harmonogram pracowników</h1>
 </div>
 
 <div class="main">
@@ -28,12 +28,12 @@
 
 <script>
     var dp = new DayPilot.Scheduler("dp");
-    dp.eventHeight = 40;
-    dp.startDate = "2019-10-01";
-    dp.days = 7;
+    dp.eventHeight = 25;
+    dp.startDate = "2021-05-10";
+    dp.days = 20;
     dp.scale = "Hour";
-    dp.businessBeginsHour = 9;
-    dp.businessEndsHour = 18;
+    dp.businessBeginsHour = 11;
+    dp.businessEndsHour = 22;
     dp.showNonBusiness = false;
     dp.eventMoveSkipNonBusiness = true;
     dp.timeHeaders = [
@@ -81,7 +81,14 @@
                   }
                 });
                 dp.message("Job created");
-              }
+              },
+              error: function(response, textStatus,xhr,err) {
+                    return alert("text status: " + textStatus +
+                        "error: " + err +
+                        "readyState: " + xhr.readyState +
+                        "responseText: "+ xhr.responseText +
+                        "text status: " + textStatus);
+              },
             });
         });
     };
@@ -119,7 +126,10 @@
                   }
                 });
                 dp.message("Job created");
-              }
+              },
+                complete: function(response, textStatus) {
+                    return alert("Hey: " + textStatus);
+                }
             });
 
         }

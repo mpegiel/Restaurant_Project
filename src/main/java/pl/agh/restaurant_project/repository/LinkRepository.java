@@ -1,14 +1,9 @@
-package org.daypilot.demo.machinescheduling.repository;
+package pl.agh.restaurant_project.repository;
 
-import org.daypilot.demo.machinescheduling.domain.Event;
-import org.daypilot.demo.machinescheduling.domain.Link;
-import org.springframework.data.jpa.repository.Query;
+import pl.agh.restaurant_project.domain.Event;
+import pl.agh.restaurant_project.domain.Link;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface LinkRepository extends CrudRepository<Link, Long> {

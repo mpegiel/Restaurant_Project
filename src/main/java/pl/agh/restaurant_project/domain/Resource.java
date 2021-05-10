@@ -1,4 +1,4 @@
-package org.daypilot.demo.machinescheduling.domain;
+package pl.agh.restaurant_project.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,7 +15,7 @@ public class Resource {
 
     @ManyToOne
     @JsonIgnore
-    ResourceGroup parent;
+    pl.agh.restaurant_project.domain.ResourceGroup parent;
 
     public Long getId() {
         return Id;
@@ -33,11 +33,11 @@ public class Resource {
         this.name = name;
     }
 
-    public ResourceGroup getParent() {
+    public pl.agh.restaurant_project.domain.ResourceGroup getParent() {
         return parent;
     }
 
-    public void setParent(ResourceGroup parent) {
+    public void setParent(pl.agh.restaurant_project.domain.ResourceGroup parent) {
         this.parent = parent;
     }
 }

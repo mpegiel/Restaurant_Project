@@ -1,6 +1,6 @@
-package org.daypilot.demo.machinescheduling.repository;
+package pl.agh.restaurant_project.repository;
 
-import org.daypilot.demo.machinescheduling.domain.Event;
+import pl.agh.restaurant_project.domain.Event;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

@@ -1,8 +1,8 @@
-package org.daypilot.demo.machinescheduling.repository;
+package pl.agh.restaurant_project.repository;
 
 
-import org.daypilot.demo.machinescheduling.domain.Resource;
-import org.daypilot.demo.machinescheduling.domain.ResourceGroup;
+import pl.agh.restaurant_project.domain.Resource;
+import pl.agh.restaurant_project.domain.ResourceGroup;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

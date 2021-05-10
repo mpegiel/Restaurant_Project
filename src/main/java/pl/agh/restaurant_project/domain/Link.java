@@ -1,10 +1,9 @@
-package org.daypilot.demo.machinescheduling.domain;
+package pl.agh.restaurant_project.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class Link {
@@ -15,11 +14,11 @@ public class Link {
 
     @ManyToOne
     @JsonIgnore
-    Event from;
+    pl.agh.restaurant_project.domain.Event from;
 
     @ManyToOne
     @JsonIgnore
-    Event to;
+    pl.agh.restaurant_project.domain.Event to;
 
     @JsonProperty("from")
     public Long getFromId() {
@@ -39,19 +38,19 @@ public class Link {
         this.id = id;
     }
 
-    public Event getFrom() {
+    public pl.agh.restaurant_project.domain.Event getFrom() {
         return from;
     }
 
-    public void setFrom(Event from) {
+    public void setFrom(pl.agh.restaurant_project.domain.Event from) {
         this.from = from;
     }
 
-    public Event getTo() {
+    public pl.agh.restaurant_project.domain.Event getTo() {
         return to;
     }
 
-    public void setTo(Event to) {
+    public void setTo(pl.agh.restaurant_project.domain.Event to) {
         this.to = to;
     }
 }
