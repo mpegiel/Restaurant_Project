@@ -12,7 +12,13 @@ import pl.agh.restaurant_project.domain.Menu;
 import pl.agh.restaurant_project.domain.Warehouse;
 import pl.agh.restaurant_project.repository.WarehouseRepository;
 import pl.agh.restaurant_project.service.WarehouseService;
-
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.print.Book;
+import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -77,7 +83,30 @@ public class WarehouseController {
 
         return "/warehouse/edit";
     }
+    @RequestMapping("/downloadCSVWarehouse")
+    public void downloadCSV(HttpServletResponse response) throws IOException {
 
+        String csvFileName = "products.csv";
+
+        response.setContentType("text/csv");
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"",
+                csvFileName);
+        response.setHeader(headerKey, headerValue);
+        List<Warehouse> tmp= repository.findAll();
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
+                CsvPreference.STANDARD_PREFERENCE);
+
+        String[] header = { "nameOfProduct","amount" };
+
+        csvWriter.writeHeader(header);
+
+        for (Warehouse product : tmp) {
+            csvWriter.write(product, header);
+        }
+
+        csvWriter.close();
+    }
 
 
 }

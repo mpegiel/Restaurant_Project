@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.nuun.kernel:kernel-core:1.0.M11">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/nuun/kernel/kernel-core/1.0.M11/kernel-core-1.0.M11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/nuun/kernel/kernel-core/1.0.M11/kernel-core-1.0.M11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/nuun/kernel/kernel-core/1.0.M11/kernel-core-1.0.M11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
