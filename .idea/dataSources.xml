@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="the_pierogi_2021-04-25T08-00Z@pierogi.database.windows.net" uuid="75d6cfd0-93cb-49c5-9e4c-60adb88a7a99">
+    <data-source source="LOCAL" name="pierogi.database.windows.net" uuid="4edb86f7-4f74-4bae-9add-353d72c4b452">
       <driver-ref>azure.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://pierogi.database.windows.net:1433;database=the_pierogi_2021-04-25T08-00Z;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://pierogi.database.windows.net:1433;database=the_pierogi_2021-04-25T08-00Z</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>
