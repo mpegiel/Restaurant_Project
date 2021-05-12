@@ -31,11 +31,18 @@ public class MenuTests {
     private MenuRepository repository;
 
     @Test
-    public void getMenuProductListSizeTests()
+    public void getMenuMealListSizeTests()
     {
         when(repository.findAll()).thenReturn(Stream.of(new Menu("Pierogi z jagodami", 15.5))
                 .collect(Collectors.toList()));
         assertEquals(1, service.getALlMenu().size());
     }
-
+    @Test
+    public void getMenuAddMealTests()
+    {
+        when(repository.findAll()).thenReturn(Stream.of(new Menu("Pierogi z jagodami", 15.5))
+                .collect(Collectors.toList()));
+        assertEquals("Pierogi z jagodami", service.getALlMenu().get(0).getNameOfMeal());
+        assertEquals(15.5, service.getALlMenu().get(0).getPrice(),0);
+    }
 }
