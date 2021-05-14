@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+
 import pl.agh.restaurant_project.domain.Warehouse;
 import pl.agh.restaurant_project.repository.WarehouseRepository;
 import pl.agh.restaurant_project.service.WarehouseService;
@@ -32,5 +33,14 @@ public class WarehouseTests {
         when(repository.findAll()).thenReturn(Stream.of(new Warehouse("Mleko", 10, true))
                 .collect(Collectors.toList()));
         assertEquals(1, service.getAllWarehouse().size());
+    }
+    @Test
+    public void getWarehouseAddProductTests()
+    {
+        when(repository.findAll()).thenReturn(Stream.of(new Warehouse("Mleko", 10,false))
+                .collect(Collectors.toList()));
+        assertEquals("Mleko", service.getAllWarehouse().get(0).getNameOfProduct());
+        assertEquals(10, service.getAllWarehouse().get(0).getAmount());
+        assertEquals(false, service.getAllWarehouse().get(0).getToOrder());
     }
 }
