@@ -21,9 +21,15 @@ jobs:
       with:
         java-version: '11'
 
-    - name: Build with Maven
-      run: mvn clean install
-
+    - name: Maven
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Run Maven tests
+      run: mvn --batch-mode --update-snapshots verify
+      
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
