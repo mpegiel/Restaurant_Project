@@ -32,7 +32,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: java-app
-        path: '/home/runner/work/Restaurant_Project/target/*.jar'
+        path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
   deploy:
     runs-on: ubuntu-latest
