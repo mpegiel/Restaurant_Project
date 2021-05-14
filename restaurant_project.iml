@@ -7,7 +7,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" />
-          <factory-entry name="restaurant_project" />
+          <factory-entry name="restaurant_project" value="b2a20f55-1949-4383-94a0-9a4824a13075" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
@@ -201,7 +201,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:1.2" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.18.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest:2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.7.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.1" level="project" />
@@ -291,5 +290,6 @@
     <orderEntry type="library" name="Maven: org.fusesource.jansi:jansi:1.18" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.seedstack.seed:seed-testing-specs:3.10.0" level="project" />
+    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.18.1" level="project" />
   </component>
 </module>

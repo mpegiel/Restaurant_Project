@@ -16,7 +16,8 @@ import java.util.Optional;
 
 
 @Controller
-public class UserController {
+public class
+UserController {
 
     @Autowired
     private UserService userService;
@@ -32,13 +33,17 @@ public class UserController {
         mav.addObject("user", new User());
         return mav;
     }
+//    @GetMapping("/login")
+//    public String login(Model model) {
+//        return "/login";
+//    }
 
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user ) {
-        User oauthUser = userService.login(user.getUsername(), user.getPersonPassword() );
+        User oauthUser = userService.findByUsername(user.getUsername());
         System.out.print(oauthUser);
         if(Objects.nonNull(oauthUser)) {
-            return "redirect:/";
+            return "redirect:/index";
         }
         else {
             return "redirect:/login";

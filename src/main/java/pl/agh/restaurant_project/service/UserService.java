@@ -1,9 +1,7 @@
 package pl.agh.restaurant_project.service;
 
-import org.apache.commons.codec.StringEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mariadb.jdbc.internal.logging.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.agh.restaurant_project.domain.User;
 import pl.agh.restaurant_project.repository.UserRepository;
@@ -11,34 +9,37 @@ import pl.agh.restaurant_project.repository.UserRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 @Transactional
 public class UserService {
 
-    @Autowired
     private UserRepository userRepo;
 
-    public User login(String Username, String PersonPassword) {
-        return userRepo.findByUsernameAndPersonPassword(Username, PersonPassword);
+    public UserService(UserRepository userRepo) {
+        this.userRepo = userRepo;
     }
 
-    public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException{
+//    public User login(String personUsername, String PersonPassword) {
+//        return userRepo.findByUsername(personUsername);
+//    }
+
+    public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException {
         User user = userRepo.findByEmail(email);
-        if (user!=null){
+        if (user != null) {
             user.setResetPasswordToken(token);
             userRepo.save(user);
-        }
-        else {
+        } else {
             throw new UsernameNotFoundException("Could not find any customer with the email " + email);
         }
     }
 
-    public User getByResetPasswordToken(String token){
+    public User getByResetPasswordToken(String token) {
         return userRepo.findByResetPasswordToken(token);
     }
 
-    public void updatePassword(User user, String newPassword){
+    public void updatePassword(User user, String newPassword) {
         user.setPersonPassword(newPassword);
         user.setResetPasswordToken(null);
         userRepo.save(user);
@@ -55,6 +56,7 @@ public class UserService {
     public User get(Long id) {
         return userRepo.findById(id).get();
     }
+
 
     public void delete(long id) {
         userRepo.deleteById(id);
@@ -75,4 +77,29 @@ public class UserService {
         }
         return null;
     }
+
+
+    public User findByUsername(String username) {
+        return userRepo.findByUsername(username);
+    }
+
+    public Iterable findAll() {
+        return userRepo.findAll();
+    }
+    public Optional<User> findById(Long id) {
+        return userRepo.findById(id);
+    }
+
 }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepo.findByUsername(username);
+//        if (user == null) {
+//            throw new UsernameNotFoundException("Invalid username or password.");
+//        }
+//        return new org.springframework.security.core.userdetails.User(user.getPersonEmail(),
+//                user.getPersonPassword() );
+//    }
+
+
