@@ -1,2 +1,3 @@
-/home/piotrek/Restaurant_Project/project/src/test/java/pl/agh/restaurant_project/WarehouseTests.java
-/home/piotrek/Restaurant_Project/project/src/test/java/pl/agh/restaurant_project/RestaurantProjectApplicationTests.java
+/home/piotrek/Restaurant_Project/src/test/java/pl/agh/restaurant_project/RestaurantProjectApplicationTests.java
+/home/piotrek/Restaurant_Project/src/test/java/pl/agh/restaurant_project/MenuTests.java
+/home/piotrek/Restaurant_Project/src/test/java/pl/agh/restaurant_project/WarehouseTests.java
