@@ -76,7 +76,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm-tree:4.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm-analysis:4.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm-util:4.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-decoration-model:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-site-renderer:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.velocity:velocity-tools:2.0" level="project" />
@@ -101,7 +100,6 @@
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-velocity:1.1.8" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:1.5.10" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty:6.1.25" level="project" />
-    <orderEntry type="library" name="Maven: org.mortbay.jetty:servlet-api:2.5-20081211" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty-util:6.1.25" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.5" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:1.4" level="project" />
