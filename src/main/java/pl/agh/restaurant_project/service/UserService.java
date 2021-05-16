@@ -1,6 +1,7 @@
 package pl.agh.restaurant_project.service;
 
 import org.mariadb.jdbc.internal.logging.LoggerFactory;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.agh.restaurant_project.domain.User;
@@ -71,7 +72,7 @@ public class UserService {
             user.setPersonSurname(updatedUser.getPersonSurname());
             user.setPersonEmail(updatedUser.getPersonEmail());
             user.setUsername(updatedUser.getUsername());
-            user.setPersonPassword(updatedUser.getPersonPassword());
+            user.setPersonPassword(updatedUser.getPassword());
             user.setPersonSalary(updatedUser.getPersonSalary());
             return userRepo.save(user);
         }
@@ -86,20 +87,10 @@ public class UserService {
     public Iterable findAll() {
         return userRepo.findAll();
     }
-    public Optional<User> findById(Long id) {
-        return userRepo.findById(id);
-    }
+
+    public User findByUsernameAndPassword(String username, String personPassword) { return userRepo.findByUsernameAndPassword(username, personPassword);}
 
 }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = userRepo.findByUsername(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException("Invalid username or password.");
-//        }
-//        return new org.springframework.security.core.userdetails.User(user.getPersonEmail(),
-//                user.getPersonPassword() );
-//    }
 
 

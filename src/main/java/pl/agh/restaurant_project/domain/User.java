@@ -31,6 +31,7 @@ public class User implements UserDetails {
     private String resetPasswordToken;
 
 
+
     public User () {
 
     }
@@ -80,9 +81,6 @@ public class User implements UserDetails {
     }
     public void setUsername(String username) {
         this.username = username;
-    }
-    public String getPersonPassword() {
-        return personPassword;
     }
     public void setPersonPassword(String password) {
         this.personPassword = password;

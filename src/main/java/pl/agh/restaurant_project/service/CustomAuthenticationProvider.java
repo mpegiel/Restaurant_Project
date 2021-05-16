@@ -5,6 +5,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.agh.restaurant_project.domain.User;
 
@@ -13,6 +14,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     private UserService userService;
+
 
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
@@ -24,7 +26,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             return null; // next auth provider will be tested
         }
 
-        return new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(username, password, user.getAuthorities());
     }
 
     @Override

@@ -13,13 +13,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserService userService;
 
-//    public CustomUserDetailsService(UserService userService) {
-//        this.userService = userService;
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final User user = userService.findByUsername(username);
+
         if (user == null) {
             throw new UsernameNotFoundException("No such user in database");
         }

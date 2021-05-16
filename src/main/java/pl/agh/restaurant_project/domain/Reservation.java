@@ -3,6 +3,7 @@ package pl.agh.restaurant_project.domain;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +18,12 @@ public class Reservation {
     private String telephoneNumber;
 
     public Reservation() {}
+
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "reservation_tables",
+            joinColumns = @JoinColumn(name = "reservation_id"),
+            inverseJoinColumns = @JoinColumn(name = "tables_table_number"))
+    private List<Reservation> reserved;
 
     public Reservation(int tableNumber, String date, String personData, String telephoneNumber) {
         this.tableNumber = tableNumber;

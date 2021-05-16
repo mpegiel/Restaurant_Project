@@ -39,8 +39,8 @@ UserController {
 //    }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("user") User user ) {
-        User oauthUser = userService.findByUsername(user.getUsername());
+    public String login(@ModelAttribute("user") User user, HttpServletRequest request ) {
+        User oauthUser = userService.findByUsernameAndPassword(request.getParameter("username"), request.getParameter("password"));
         System.out.print(oauthUser);
         if(Objects.nonNull(oauthUser)) {
             return "redirect:/index";
