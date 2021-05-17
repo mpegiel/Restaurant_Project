@@ -43,7 +43,7 @@ public class OrderController {
         orderService.save(order);
 
         model.addAttribute("orders", orderRepo.findAll() );
-        return "redirect:orders/all";
+        return "redirect:/orders/all";
     }
 
     @RequestMapping("/orders/delete/{id}")
