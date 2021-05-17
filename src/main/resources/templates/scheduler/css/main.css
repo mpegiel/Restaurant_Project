@@ -1,4 +1,4 @@
-p, body, td {
+p, body, td, a{
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 10pt;
 }
@@ -18,7 +18,6 @@ a {
 }
 
 .header {
-    background: #003267;
     /*background: linear-gradient(to right, #011329 0%, #00639e 44%, #011329 100%);*/
     background: darkslategray;
     padding: 20px 10px;
@@ -57,3 +56,21 @@ a {
 .icon-green:before { background-color: #6aa84f; }
 .icon-yellow:before { background-color: #f1c232; }
 .icon-red:before { background-color: #cc0000; }
+
+.link {
+    justify-content: center;
+    display: flex;
+}
+a:link, a:visited{
+    font-weight: bolder;
+    text-decoration: none;
+    background-color: darkslategray;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    display: inline-block;
+
+}
+a:hover, a:active{
+    background-color: darkcyan;
+}

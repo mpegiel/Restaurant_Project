@@ -16,9 +16,9 @@ public class Event {
 
     String text;
 
-    LocalDateTime start;
+    LocalDateTime starttime;
 
-    LocalDateTime end;
+    LocalDateTime endtime;
 
     @ManyToOne
     @JsonIgnore
@@ -52,20 +52,18 @@ public class Event {
         this.text = text;
     }
 
-    public LocalDateTime getStart() {
-        return start;
+    public LocalDateTime getStarttime() {
+        return starttime;
     }
 
-    public void setStart(LocalDateTime start) {
-        this.start = start;
+    public void setStarttime(LocalDateTime start) {
+        this.starttime = start;
     }
 
-    public LocalDateTime getEnd() {
-        return end;
-    }
+    public LocalDateTime getEndtime() { return endtime; }
 
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
+    public void setEndtime(LocalDateTime end) {
+        this.endtime = end;
     }
 
     public Resource getResource() {

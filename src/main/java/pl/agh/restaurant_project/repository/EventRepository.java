@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventRepository extends CrudRepository<Event, Long> {
-    @Query("from Event e where not(e.end < :from and e.start > :to)")
-    public List<Event> findBetween(@Param("from") LocalDateTime start, @Param("to") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime end);
+    @Query("from Event e where not(e.endtime < :from and e.starttime > :to)")
+    public List<Event> findBetween(@Param("from") LocalDateTime starttime, @Param("to") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime endtime);
 
     List<Event> findByJoin(Long joinId);
 }
