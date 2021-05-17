@@ -32,8 +32,7 @@ public class OrderService {
         Optional<Order> optionalOrder = orderRepo.findById(ID);
         if (optionalOrder.isPresent()) {
             Order order = optionalOrder.get();
-            //order.setNameOfMeal(updatedOrder.getNameOfMeal());
-            //order.setPrice(updatedOrder.getPrice());
+            order.setCode(updatedOrder.getCode());
 
             return orderRepo.save(order);
         }
