@@ -155,17 +155,17 @@
         <td colspan="5"> No Users Available </td>
     </tr>
     <tr th:each="user : ${users}">
-        <td><span th:text="${user.personId}"> ID </span></td>
-        <td><span th:text="${user.firstName}"> Imie </span></td>
-        <td><span th:text="${user.personSurname}"> Nazwisko </span></td>
-        <td><span th:text="${user.personEmail}"> Nazwa </span></td>
-        <td><span th:text="${user.personPassword}"> Cena </span></td>
-        <td><span th:text="${user.personSalary}"> Pensja </span></td>
+        <td><span th:text="${user.getPersonId()}"> ID </span></td>
+        <td><span th:text="${user.getFirstName()}"> Imie </span></td>
+        <td><span th:text="${user.getPersonSurname()}"> Nazwisko </span></td>
+        <td><span th:text="${user.getPersonEmail()}"> Nazwa </span></td>
+        <td><span th:text="${user.getPassword()}"> Cena </span></td>
+        <td><span th:text="${user.getPersonSalary()}"> Pensja </span></td>
         <td>
-            <a th:href="@{/users/edit/{id}(id=${user.personId})}">Edit</a>
+            <a th:href="@{/users/edit/{id}(id=${user.getPersonId()})}">Edit</a>
         </td>
         <td>
-            <a th:href="@{/users/delete/{id}(id=${user.personId})}">Delete</a>
+            <a th:href="@{/users/delete/{id}(id=${user.getPersonId()})}">Delete</a>
         </td>
     </tr>
     </tbody>
