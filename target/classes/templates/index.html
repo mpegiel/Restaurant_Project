@@ -9,93 +9,87 @@
 <head>
     <meta charset="utf-8">
     <style>
-        .navbar-header ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            list-style-type: none
+        body {
+            padding: 0px;
+            margin: 0px;
+            font-family: 'Raleway', sans-serif;
+            height: 100%;
         }
-
-        .navbar-header li {
+        
+        .main {
             display: flex;
-            justify-content: center;
-            height: 1em;
-            width: 4em;
-            margin: 2em;
-            font-family: "Roboto", helvetica, arial, sans-serif;
-            border: 3px solid #ff7200;
-            box-shadow: 0 8px 4px -6px darkgrey;
-            border-radius: 20px;
-            padding: 5em;
+            height: 100%;
+            justify-content: space-between;
         }
-
+        
+        .navbar-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .navbar-header {
+            width: 20em;
+            height: 38em;
+            background-color: rgba(243, 241, 239, 1);
+        }
+        
         .navbar-header a {
+            font: 300 38px/1.5 "Helvetica Neue", sans-serif;
+            margin-left: 1em;
+            color: #d7a150;
             text-decoration: none;
-            color: black;
         }
-
-        .nav a:hover {
-            color: #ff7200;
+        
+        a:hover {
+            transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+            color: #2c323b;
         }
-
-        .users a {
-            font-family: "Roboto", helvetica, arial, sans-serif;
-            display: block;
-            color: #ff7200;
-            text-decoration: none;
-            position: relative;
+        
+        #logout {
+            color: rgb(107, 104, 104);
         }
-
-        .users a::after {
-            content: "";
-            background: white;
-            mix-blend-mode: exclusion;
-            width: calc(100% + 20px);
-            height: 0;
-            position: absolute;
-            bottom: -4px;
-            left: -10px;
-            transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        
+        .text {
+            height: 25em;
+            width: 40em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 5em;
         }
-
-        .users :hover::after {
-            height: calc(100% + 8px)
+        
+        .text h1,
+        h2 {
+            color: #d7a150;
         }
     </style>
 </head>
 
 <body>
-<div class="users">
-    <a th:href="@{/logout}">Logout</a>
-</div>
-<div class="navbar-header">
+    <div class="main">
+        <div class="navbar-header">
 
-    <ul class="nav">
-        <li><a href="#home">HOME</a></li>
-        <li><a href="/scheduler">EVENT</a></li>
-        <li><a href="/reservation/all">RESERVATIONS</a></li>
-        <li><a href="/warehouse/all">WAREHOUSE</a></li>
-        <li><a href="/menu/all">MENU</a></li>
-        <li><a href="/users/all">USERS</a></li>
-        <li><a href="/orders/all">ORDERS</a></li>
-        <li><a href="/bills/all">BILLS</a></li>
-
-
-
-    </ul>
-
-
-</div>
-
-</header>
-
-<!--End of header -->
+            <a id="logout" th:href="@{/logout}">Logout</a>
+            <br>
+            <a href="/">Home</a>
+            <a href="/scheduler">Event</a>
+            <a href="/reservation/all">Reservation</a>
+            <a href="/warehouse/all">Warehouse</a>
+            <a href="/menu/all">Menu</a>
+            <a href="/users/all">Users</a>
+            <a href="/orders/all">Orders</a>
+            <a href="/bills/all">Bills</a>
 
 
 
+        </div>
+        <div class="text">
 
-
-
+            <h2>Restaurant management system!</h2>
+            <img th:src="@{/images/pierogi.png}">
+            <h1>The Pierogi!</h1>
+        </div>
 </body>
 
 </html>
