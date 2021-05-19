@@ -2,7 +2,9 @@ package pl.agh.restaurant_project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import pl.agh.restaurant_project.service.CustomAuthenticationProvider;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.agh.restaurant_project.domain.UserSecurity;
 import pl.agh.restaurant_project.service.CustomUserDetailsService;
 import pl.agh.restaurant_project.service.UserService;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +14,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
@@ -20,12 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
-    @Autowired
     private CustomUserDetailsService userDetailsService;
-
-    @Autowired
-    private CustomAuthenticationProvider authProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/changeofpassword").permitAll()
                 .antMatchers("/reset_password_form").permitAll()
                 .antMatchers("/reset_password").permitAll()
-                .anyRequest().authenticated().and().formLogin().loginPage("/login").usernameParameter("username")
+                .anyRequest().authenticated().and().formLogin().loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
@@ -45,11 +41,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login");
     }
 
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        authenticationProvider.setUserDetailsService(userDetailsService);
+        return authenticationProvider;
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .authenticationProvider(this.authProvider)
-                .userDetailsService(this.userDetailsService);
+                .authenticationProvider(authProvider());
     }
 }
 

@@ -1,7 +1,5 @@
 package pl.agh.restaurant_project.service;
 
-import org.mariadb.jdbc.internal.logging.LoggerFactory;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.agh.restaurant_project.domain.User;
@@ -10,7 +8,6 @@ import pl.agh.restaurant_project.repository.UserRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @Service
 @Transactional
@@ -21,10 +18,6 @@ public class UserService {
     public UserService(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
-
-//    public User login(String personUsername, String PersonPassword) {
-//        return userRepo.findByUsername(personUsername);
-//    }
 
     public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException {
         User user = userRepo.findByEmail(email);
@@ -72,16 +65,11 @@ public class UserService {
             user.setPersonSurname(updatedUser.getPersonSurname());
             user.setPersonEmail(updatedUser.getPersonEmail());
             user.setUsername(updatedUser.getUsername());
-            user.setPersonPassword(updatedUser.getPassword());
+            user.setPersonPassword(updatedUser.getPersonPassword());
             user.setPersonSalary(updatedUser.getPersonSalary());
             return userRepo.save(user);
         }
         return null;
-    }
-
-
-    public User findByUsername(String username) {
-        return userRepo.findByUsername(username);
     }
 
     public Iterable findAll() {

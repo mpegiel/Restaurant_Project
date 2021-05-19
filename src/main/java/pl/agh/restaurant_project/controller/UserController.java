@@ -56,7 +56,7 @@ UserController {
         return "login";
     }
 
-    @RequestMapping(value = "users/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/all", method = RequestMethod.GET)
     public ModelAndView users() {
         ModelAndView mav = new ModelAndView("users/all");
         mav.addObject("users", userRepo.findAll());

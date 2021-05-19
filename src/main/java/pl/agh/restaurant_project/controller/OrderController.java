@@ -35,7 +35,7 @@ public class OrderController {
     public String showNewOrderPage(Model model) {
         Order order = new Order();
         model.addAttribute("order", order);
-        return "orders/create";
+        return "/orders/create";
     }
 
     @RequestMapping(value = "/orders/save", method = RequestMethod.POST)

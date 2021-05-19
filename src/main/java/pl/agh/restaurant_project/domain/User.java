@@ -1,17 +1,15 @@
 package pl.agh.restaurant_project.domain;
 
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 @Entity
 @Table(name="Person", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
-public class User implements UserDetails {
+public class User {
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long personId;
@@ -30,20 +28,15 @@ public class User implements UserDetails {
     @Column
     private String resetPasswordToken;
 
+    private String roles = "";
 
 
-    public User () {
+    public User() {
 
     }
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "person_role",
-            joinColumns = @JoinColumn(name = "person_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> authorities;
-
     public User(Long PersonId, String PersonUsername, String PersonPassword, String PersonEmail, String firstName,
-    String PersonSurname, String PersonSalary) {
+    String PersonSurname, String PersonSalary, String roles) {
         this.personId = PersonId;
         this.username = PersonUsername;
         this.personPassword = PersonPassword;
@@ -51,27 +44,8 @@ public class User implements UserDetails {
         this.firstName = firstName;
         this.personSurname = PersonSurname;
         this.personSalary = PersonSalary;
+        this.roles = roles;
     }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.username;
-    }
-    @Override
-    public String getPassword() { return this.personPassword; }
-    @Column
-    public boolean isAccountNonExpired() { return true; }
-    @Column
-    public boolean isAccountNonLocked() { return true; }
-    @Column
-    public boolean isCredentialsNonExpired() { return true; }
-    @Column
-    public boolean isEnabled() { return true; }
 
     public Long getPersonId() {
         return personId;
@@ -79,13 +53,12 @@ public class User implements UserDetails {
     public void setPersonId(Long id) {
         this.personId = id;
     }
+    public String getUsername() { return username; }
     public void setUsername(String username) {
         this.username = username;
     }
     public String getPersonPassword() { return this.personPassword; }
-    public void setPersonPassword(String password) {
-        this.personPassword = password;
-    }
+    public void setPersonPassword(String password) { this.personPassword = password; }
     public String getPersonSalary() {
         return personSalary;
     }
@@ -99,7 +72,12 @@ public class User implements UserDetails {
     public void setFirstName(String personName) { this.firstName = personName; }
     public String getPersonSurname() { return personSurname; }
     public void setPersonSurname(String personSurname) { this.personSurname = personSurname; }
-
-
+    public String getRoles() { return roles; }
+    public List<String> getRoleList() {
+        if(this.roles.length() > 0) {
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
 
 }
