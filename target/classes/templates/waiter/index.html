@@ -1,0 +1,93 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      padding: 0px;
+      margin: 0px;
+      font-family: 'Raleway', sans-serif;
+      height: 100%;
+    }
+
+    .main {
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .navbar-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar-header {
+      width: 20em;
+      height: 38em;
+      background-color: rgba(243, 241, 239, 1);
+    }
+
+    .navbar-header a {
+      font: 300 38px/1.5 "Helvetica Neue", sans-serif;
+      margin-left: 1em;
+      color: #d7a150;
+      text-decoration: none;
+    }
+
+    a:hover {
+      transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+      color: #2c323b;
+    }
+
+    #logout {
+      color: rgb(107, 104, 104);
+    }
+
+    .text {
+      height: 25em;
+      width: 40em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 5em;
+    }
+
+    .text h1,
+    h2 {
+      color: #d7a150;
+    }
+  </style>
+</head>
+
+<body>
+<div class="main">
+  <div class="navbar-header">
+
+    <a id="logout" th:href="@{/logout}">Logout</a>
+    <br>
+    <a href="/">Home</a>
+    <a href="/scheduler">Schedule</a>
+    <a href="/reservation/all">Reservation</a>
+    <a href="/menu/all">Menu</a>
+    <a href="/orders/all">Orders</a>
+    <a href="/bills/all">Bills</a>
+
+  </div>
+  <div class="text">
+
+    <h2>Restaurant management system!</h2>
+    <img th:src="@{/images/pierogi.png}">
+    <h1>The Pierogi!</h1>
+  </div>
+
+</div>
+</body>
+
+</html>

@@ -113,4 +113,8 @@ UserController {
     public String cook() {
         return "/cook/index";
     }
+    @GetMapping("/accountant/index")
+    public String accountant() {
+        return "/accountant/index";
+    }
 }
