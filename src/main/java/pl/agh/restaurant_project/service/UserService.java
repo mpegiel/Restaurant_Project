@@ -76,8 +76,6 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public User findByUsernameAndPassword(String username, String personPassword) { return userRepo.findByUsernameAndPassword(username, personPassword);}
-
 }
 
 

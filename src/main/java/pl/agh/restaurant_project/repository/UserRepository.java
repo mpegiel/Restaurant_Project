@@ -9,8 +9,6 @@ import java.util.Optional;
 @Repository
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query("SELECT c FROM User c WHERE c.personPassword = ?1")
-    User findByUsernameAndPassword(String Username, String personPassword);
     @Query("SELECT c FROM User c WHERE c.username = ?1")
     User findByUsername(String Username);
     @Query("SELECT c FROM User c WHERE c.personId = ?1")

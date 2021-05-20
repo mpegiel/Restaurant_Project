@@ -33,17 +33,13 @@ UserController {
         mav.addObject("user", new User());
         return mav;
     }
-//    @GetMapping("/login")
-//    public String login(Model model) {
-//        return "/login";
-//    }
 
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user, HttpServletRequest request ) {
-        User oauthUser = userService.findByUsernameAndPassword(request.getParameter("username"), request.getParameter("password"));
+        User oauthUser = userRepo.findByUsername(request.getParameter("username"));
         System.out.print(oauthUser);
         if(Objects.nonNull(oauthUser)) {
-            return "redirect:/index";
+            return "redirect:/";
         }
         else {
             return "redirect:/login";
