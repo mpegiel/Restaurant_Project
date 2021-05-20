@@ -100,4 +100,17 @@ UserController {
         userService.delete(id);
         return "redirect:/users/all";
     }
+
+    @GetMapping("/admin/index")
+    public String admin() {
+        return "/admin/index";
+    }
+    @GetMapping("/waiter/index")
+    public String waiter() {
+        return "/waiter/index";
+    }
+    @GetMapping("/cook/index")
+    public String cook() {
+        return "/cook/index";
+    }
 }
