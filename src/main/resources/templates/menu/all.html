@@ -3,25 +3,61 @@
 <head>
 
   <style>
-
     body {
-
-      font-family: "Roboto", helvetica, arial, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      text-rendering: optimizeLegibility;
+      padding: 0px;
+      margin: 0px;
+      font-family: 'Raleway', sans-serif;
+      height: 100%;
     }
 
+    .main {
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .navbar-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar-header {
+      width: 25em;
+      height: 38em;
+      background-color: rgba(243, 241, 239, 1);
+    }
+
+    .navbar-header a {
+      font: 300 38px/1.5 "Helvetica Neue", sans-serif;
+      margin-left: 1em;
+      color: #d7a150;
+      text-decoration: none;
+    }
+
+    a:hover {
+      transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+      color: #2c323b;
+    }
+
+    #logout {
+      color: rgb(107, 104, 104);
+    }
+
+
+.table{
+  width: 50em;
+}
     div.table-title {
       display: block;
       margin: auto;
-      max-width: 600px;
+      width:50em;
       padding:5px;
       width: 100%;
     }
 
     .table-title h3 ,.table-link a{
-      color: #ff7200;
+      color: #d7a150;
       font-size: 30px;
       font-weight: 400;
       font-style:normal;
@@ -34,9 +70,17 @@
       justify-content: center;
     }
     .table-link a{
-      font-size: 15px;
-      margin: 10px;
+      color: #FFF;
+      height:2.3em;
+      border-radius: 40px;
+      width: 12em;
+      padding-top: 0.6em;
+      text-align: center;
+      background: #d7a150;;
+      font-size: 14px;
+      margin: 1em;
       text-decoration: none;
+      box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
     }
     /*** Table Styles **/
 
@@ -85,9 +129,9 @@
     }
 
     tr:hover td {
-      background:#FF8E33;
+      background:rgba(215, 161,80,0.7);;
       color:#FFFFFF;
-      border-top: 1px solid #FF8E33;
+      border-top: 1px solid #d7a150;
     }
 
     tr:first-child {
@@ -103,7 +147,7 @@
     }
 
     tr:nth-child(odd):hover td {
-      background:#FF8E33;
+      background:rgba(215, 161,80,0.7);
     }
 
     tr:last-child td:first-child {
@@ -126,7 +170,7 @@
     }
   td a{
     text-decoration: none;
-    color: #ff7200;
+    color: #d7a150;
 
   }
     td:last-child {
@@ -140,16 +184,29 @@
 
 </head>
 <body>
+<div class="main">
+  <div class="navbar-header">
+
+    <a id="logout" th:href="@{/logout}">Logout</a>
+    <br>
+    <a href="/admin/index">Admin Panel</a>
+    <a href="/waiter/index">Waiter Panel</a>
+    <a href="/cook/index">Cook Panel</a>
+    <a href="/accountant/index">Accountant Panel</a>
+
+  </div>
+
+<div class="table">
 <div class="table-title">
   <h3>Menu</h3>
 </div>
 <table class="table-fill">
   <thead>
   <tr>
-    <th> Nazwa  </th>
-    <th> Cena </th>
-    <th> Usuń</th>
-    <th> Edycja</th>
+    <th> Name  </th>
+    <th> Price </th>
+    <th> Delete </th>
+    <th> Edit</th>
   </tr>
   </thead>
   <tbody>
@@ -157,19 +214,21 @@
     <td colspan="2"> No Meals Available </td>
   </tr>
   <tr th:each="menu : ${menus}">
-    <td><span th:text="${menu.nameOfMeal}"> Nazwa  </span></td>
-    <td><span th:text="${menu.price}"> Cena </span></td>
+    <td><span th:text="${menu.nameOfMeal}"> Name  </span></td>
+    <td><span th:text="${menu.price}"> Price </span></td>
     <td>
       <a th:href="@{/menu/edit/{id}(id=${menu.id})}">Edit</a>
     </td>
     <td>
-      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Usuń</a>
+      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Delete</a>
     </td>
   </tr>
   </tbody>
 </table>
 <div class="table-link" >
-  <a   href="/menu/create">Dodaj pozycję</a> <br />
+  <a   href="/menu/create">Add product</a> <br />
+</div>
+</div>
 </div>
 </body>
 </html>
