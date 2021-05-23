@@ -44,13 +44,7 @@
       color: rgb(107, 104, 104);
     }
 
-    body {
 
-      font-family: "Roboto", helvetica, arial, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      text-rendering: optimizeLegibility;
-    }
 .table{
   width: 50em;
 }
@@ -209,10 +203,10 @@
 <table class="table-fill">
   <thead>
   <tr>
-    <th> Nazwa  </th>
-    <th> Cena </th>
-    <th> Usuń</th>
-    <th> Edycja</th>
+    <th> Name  </th>
+    <th> Price </th>
+    <th> Delete </th>
+    <th> Edit</th>
   </tr>
   </thead>
   <tbody>
@@ -220,19 +214,19 @@
     <td colspan="2"> No Meals Available </td>
   </tr>
   <tr th:each="menu : ${menus}">
-    <td><span th:text="${menu.nameOfMeal}"> Nazwa  </span></td>
-    <td><span th:text="${menu.price}"> Cena </span></td>
+    <td><span th:text="${menu.nameOfMeal}"> Name  </span></td>
+    <td><span th:text="${menu.price}"> Price </span></td>
     <td>
       <a th:href="@{/menu/edit/{id}(id=${menu.id})}">Edit</a>
     </td>
     <td>
-      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Usuń</a>
+      <a th:href="@{/menu/delete/{id}(id=${menu.id})}">Delete</a>
     </td>
   </tr>
   </tbody>
 </table>
 <div class="table-link" >
-  <a   href="/menu/create">Dodaj pozycję</a> <br />
+  <a   href="/menu/create">Add product</a> <br />
 </div>
 </div>
 </div>
