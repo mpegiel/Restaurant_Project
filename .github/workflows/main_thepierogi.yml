@@ -25,6 +25,6 @@ jobs:
         run: mvn clean package
       - uses: azure/webapps-deploy@v1
         with:
-          app-name: spring-petclinic
+          app-name: thepierogi
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_af0b43cf31c64844acb8e748c96899db }}
           package: '${{ github.workspace }}/target/*.jar'
