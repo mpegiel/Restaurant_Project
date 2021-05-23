@@ -4,23 +4,60 @@
   <style>
 
     body {
-
-      font-family: "Roboto", helvetica, arial, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      text-rendering: optimizeLegibility;
+      padding: 0px;
+      margin: 0px;
+      font-family: 'Raleway', sans-serif;
+      height: 100%;
     }
 
+    .main {
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .navbar-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar-header {
+      width: 25em;
+      height: 38em;
+      background-color: rgba(243, 241, 239, 1);
+    }
+
+    .navbar-header a {
+      font: 300 38px/1.5 "Helvetica Neue", sans-serif;
+      margin-left: 1em;
+      color: #d7a150;
+      text-decoration: none;
+    }
+
+    a:hover {
+      transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+      color: #2c323b;
+    }
+
+    #logout {
+      color: rgb(107, 104, 104);
+    }
+
+
+    .table{
+      width: 50em;
+    }
     div.table-title {
       display: block;
       margin: auto;
-      max-width: 600px;
+      width:50em;
       padding:5px;
       width: 100%;
     }
 
     .table-title h3 ,.table-link a{
-      color: #ff7200;
+      color: #d7a150;
       font-size: 30px;
       font-weight: 400;
       font-style:normal;
@@ -32,12 +69,22 @@
       display: flex;
       justify-content: center;
     }
-    .table-link a{
-      font-size: 15px;
-      margin: 10px;
+    .submit_btn_table{
+      color: #FFF;
+      height:2.3em;
+      border-radius: 40px;
+      width: 12em;
+      text-align: center;
+      background: #d7a150;;
+      font-size: 14px;
+      margin: 1em;
       text-decoration: none;
+      border: 1px solid #d7a150;
     }
-    /*** Table Styles **/
+    .submit_btn_table:hover{
+      color: #d7a150;
+      background:#FFF ;
+    }
 
     .table-fill {
       background: white;
@@ -83,11 +130,6 @@
       text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
     }
 
-    tr:hover td {
-      background:#FF8E33;
-      color:#FFFFFF;
-      border-top: 1px solid #FF8E33;
-    }
 
     tr:first-child {
       border-top:none;
@@ -101,9 +143,6 @@
       background:#EBEBEB;
     }
 
-    tr:nth-child(odd):hover td {
-      background:#FF8E33;
-    }
 
     tr:last-child td:first-child {
       border-bottom-left-radius:3px;
@@ -123,9 +162,19 @@
       text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
       border-right: 1px solid #C1C3D1;
     }
+    td a{
+      text-decoration: none;
+      color: #d7a150;
 
+    }
     td:last-child {
       border-right: 0px;
+
+    }
+    .form_input{
+      border-radius: 30px;
+      border: none;
+      background: transparent;
     }
 
 
@@ -136,24 +185,36 @@
 
 </head>
 <body>
+<div class="main">
+  <div class="navbar-header">
+
+    <a id="logout" th:href="@{/logout}">Logout</a>
+    <br>
+    <a href="/admin/index">Admin Panel</a>
+    <a href="/waiter/index">Waiter Panel</a>
+    <a href="/cook/index">Cook Panel</a>
+    <a href="/accountant/index">Accountant Panel</a>
+
+  </div>
+  <div class="table">
 <div class="table-title">
-<h3>Dodaj pozycję</h3>
+<h3>Add Product</h3>
 </div>
 <br />
 <form action="#" th:action="@{/warehousesave}" th:object="${warehouse}"
       method="post">
   <table class="table-fill">
     <tr>
-      <td>Nazwa:</td>
-      <td><input type="text" th:field="*{nameOfProduct}" /></td>
+      <td>Name:</td>
+      <td><input class="form_input" type="text" th:field="*{nameOfProduct}" /></td>
     </tr>
     <tr>
-      <td>Ilość:</td>
-      <td><input type="text" th:field="*{amount}" /></td>
+      <td>Amount:</td>
+      <td><input class="form_input" type="text" th:field="*{amount}" /></td>
     </tr>
     <tr>
-      <td>Czy trzeba zamówić:</td>
-      <td><input type="text" th:field="*{toOrder}" /></td>
+      <td>To Order:</td>
+      <td><input class="form_input" type="text" th:field="*{toOrder}" /></td>
     </tr>
 
     <tr>
@@ -162,5 +223,7 @@
   </table>
 </form>
 </div>
+</div>
+
 </body>
 </html>
