@@ -50,4 +50,4 @@ jobs:
         app-name: 'thepierogi'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_af0b43cf31c64844acb8e748c96899db }}
-        package: '${{ github.workspace }}/target/*.jar'
+        package: '*.jar'
