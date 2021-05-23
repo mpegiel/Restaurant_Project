@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <style>
+
         body {
+
             font-family: "Roboto", helvetica, arial, sans-serif;
             font-size: 16px;
             font-weight: 400;
@@ -129,27 +131,57 @@
 
     </style>
     <meta charset="UTF-8">
-    <title>Edit Order</title>
+    <title>Add Order</title>
     <meta charset="utf-8">
 
 </head>
 <body>
 <div class="table-title">
-    <h3>Edit an order</h3>
+    <h3>Add New Order</h3>
 </div>
 <br />
-<form action="#" th:action="@{/orders/update/{id}(id=${orderId})}" th:object="${order}"
+<form action="#" th:action="@{/orders/save}" th:object="${order}"
       method="post">
     <table class="table-fill">
         <tr>
             <td>Code:</td>
-            <td><input type="text" th:field="*{code}"/></td>
+            <td><input type="text" th:field="*{code}" /></td>
         </tr>
 
         <tr>
             <td colspan="2"><button class="submit_btn_table" type="submit">Save</button></td>
         </tr>
     </table>
+
+
+    <p>
+    <table class="table-fill">
+        <thead>
+        <tr>
+            <th> Order Item  </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${orderItems.empty}">
+            <td colspan="5"> No Order Items added. </td>
+        </tr>
+        <tr th:each="orderItem: ${orderItems}">
+            <td><span th:text="${orderItem.quantity}"> Order Code</span></td>
+            <td>
+                <a th:href="@{/orderitems/edit/{id}(id=${orderItem.id})}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{/orderitems/delete/{id}(id=${orderItem.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="table-link" >
+        <a href="/orderitems/create">Add new order item</a> <br />
+    </div>
+    </p>
+
+
 </form>
 </div>
 </body>

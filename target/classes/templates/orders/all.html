@@ -150,7 +150,7 @@
     <td colspan="5"> No Orders added. </td>
   </tr>
   <tr th:each="order: ${orders}">
-    <td><span th:text="${order.code}"> Order Code</span></td>
+    <td><span th:text="${order.id}"> Order Code</span></td>
     <td>
       <a th:href="@{/orders/edit/{id}(id=${order.id})}">Edit</a>
     </td>

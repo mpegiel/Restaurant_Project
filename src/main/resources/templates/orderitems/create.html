@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Order Item</title>
+</head>
+<body>
+
+<form th:action="@{/orderitems/save}" th:object="${orderItem}" method="post">
+    <p>
+        <label>Meals:
+          <select th:field="*{meal}">
+            <option th:each="meal : ${allMeals}" th:value="${meal.id}" th:text="${meal.nameOfMeal}"></option>
+          </select>
+        </label>
+    </p>
+
+    <p>
+        <label>Quantity:
+            <input type="text" th:field="*{quantity}" />
+        </label>
+    </p>
+
+    <p>
+        <button class="submit_btn_table" type="submit">Save</button>
+    </p>
+</form>
+
+</body>
+</html>
