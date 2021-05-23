@@ -7,6 +7,7 @@
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/extras/Utility.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/Warehouse.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/UserRepository.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/CustomUserDetailsService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/ResourceGroupRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/MenuController.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/ResourceGroup.java
@@ -16,13 +17,18 @@
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/SchedulerController.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/MenuRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/UserController.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/OrderController.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/ReservationRepository.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/UserSecurity.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/OrderService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/WarehouseService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/ReservationService.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/OrderRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/ResourceRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/Resource.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/MenuService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/Link.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/Order.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/WarehouseRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/WarehouseController.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/Event.java
