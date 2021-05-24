@@ -48,12 +48,12 @@ public class MenuController {
         return "redirect:menu/all";
     }
     @RequestMapping("/menu/delete/{id}")
-    public String deleteUser(@PathVariable(name = "id") int id) {
+    public String deleteMenu(@PathVariable(name = "id") int id) {
        menuService.delete(id);
         return "redirect:/menu/all";
     }
     @RequestMapping(path = "/menuupdate/{id}", method = RequestMethod.POST)
-    public String updateUser(@PathVariable("id") Optional<Long> id, @ModelAttribute("meal") Menu menu, Model model, BindingResult result) {
+    public String updateMenu(@PathVariable("id") Optional<Long> id, @ModelAttribute("meal") Menu menu, Model model, BindingResult result) {
         if (id.isPresent()) {
             menuService.update(id.get(), menu);
         }
