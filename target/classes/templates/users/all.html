@@ -146,8 +146,11 @@
         <th> First name  </th>
         <th> Last name  </th>
         <th> E-mail  </th>
+        <th> Login </th>
         <th> Password </th>
         <th> Salary </th>
+        <th> Edit </th>
+        <th> Delete </th>
     </tr>
     </thead>
     <tbody>
@@ -158,8 +161,9 @@
         <td><span th:text="${user.getPersonId()}"> ID </span></td>
         <td><span th:text="${user.getFirstName()}"> Imie </span></td>
         <td><span th:text="${user.getPersonSurname()}"> Nazwisko </span></td>
-        <td><span th:text="${user.getPersonEmail()}"> Nazwa </span></td>
-        <td><span th:text="${user.getPassword()}"> Cena </span></td>
+        <td><span th:text="${user.getPersonEmail()}"> E-mail </span></td>
+        <td><span th:text="${user.getUsername()}"> Login </span></td>
+        <td><span th:text="${user.getPersonPassword()}"> Hasło </span></td>
         <td><span th:text="${user.getPersonSalary()}"> Pensja </span></td>
         <td>
             <a th:href="@{/users/edit/{id}(id=${user.getPersonId()})}">Edit</a>
