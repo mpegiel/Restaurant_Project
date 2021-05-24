@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:action="@{/orderitems/save}" th:object="${orderItem}" method="post">
+<form th:action="@{/orderitems/save/{id}(id=${orderId})}" th:object="${orderItem}" method="post">
     <p>
         <label>Meals:
           <select th:field="*{meal}">

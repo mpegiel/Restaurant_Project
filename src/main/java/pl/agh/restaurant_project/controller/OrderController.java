@@ -15,6 +15,7 @@ import pl.agh.restaurant_project.domain.OrderItem;
 import pl.agh.restaurant_project.repository.MenuRepository;
 import pl.agh.restaurant_project.repository.OrderItemRepository;
 import pl.agh.restaurant_project.repository.OrderRepository;
+import pl.agh.restaurant_project.service.OrderItemService;
 import pl.agh.restaurant_project.service.OrderService;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class OrderController {
 
     @Autowired
     private OrderItemRepository orderItemRepo;
+    @Autowired
+    private OrderItemService orderItemService;
 
     public OrderController(OrderRepository orderRepo, OrderService orderService) {
         this.orderRepo = orderRepo;
@@ -74,7 +77,7 @@ public class OrderController {
             model.addAttribute("order", order);
             model.addAttribute("orderId", id.get());
 
-            List<OrderItem> orderItems = orderItemRepo.findAll();//order.getOrderItems();
+            List<OrderItem> orderItems = orderItemService.getOrderItemsByOrder(order);//order.getOrderItems();
             model.addAttribute("orderItems", orderItems);
         }
 

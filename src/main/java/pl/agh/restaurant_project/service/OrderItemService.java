@@ -2,6 +2,7 @@ package pl.agh.restaurant_project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.agh.restaurant_project.domain.Order;
 import pl.agh.restaurant_project.domain.OrderItem;
 import pl.agh.restaurant_project.repository.OrderItemRepository;
 
@@ -15,6 +16,11 @@ public class OrderItemService {
 
     public List<OrderItem> getALlOrders() {
         return orderItemRepo.findAll();
+    }
+    public List<OrderItem> getOrderItemsByOrder(Order order) {
+        List<OrderItem> items = orderItemRepo.findAll();
+        items.removeIf(x -> (x.getOrder() == null || x.getOrder().getId() != order.getId()));
+        return items;
     }
 
     public OrderItem save(OrderItem orderItem) {
