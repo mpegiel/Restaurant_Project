@@ -106,9 +106,7 @@ UserController {
         return "admin/index";
     }
     @GetMapping("/waiter/index")
-    public String waiter() {
-        return "waiter/index";
-    }
+    public String waiter() { return "waiter/index"; }
     @GetMapping("/cook/index")
     public String cook() {
         return "cook/index";
