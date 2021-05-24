@@ -46,7 +46,7 @@
     </schema>
     <schema id="14" parent="3" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2021-05-24.10:39:01.540</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-05-24.14:20:31.863</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="15" parent="3" name="guest">
@@ -63,7 +63,7 @@
     <table id="18" parent="14" name="event">
       <ObjectId>955866472</ObjectId>
       <CreatedTimestamp>2021-04-25.04:22:06.387</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-24.10:14:44.250</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-05-24.14:20:30.823</ModifiedTimestamp>
     </table>
     <table id="19" parent="14" name="link">
       <ObjectId>1579868695</ObjectId>
@@ -183,12 +183,12 @@
       <Position>10</Position>
       <DataType>bigint|0s</DataType>
     </column>
-    <column id="42" parent="18" name="endtime">
-      <Position>11</Position>
+    <column id="42" parent="18" name="start">
+      <Position>15</Position>
       <DataType>datetime2|0s</DataType>
     </column>
-    <column id="43" parent="18" name="starttime">
-      <Position>12</Position>
+    <column id="43" parent="18" name="_end">
+      <Position>16</Position>
       <DataType>datetime2|0s</DataType>
     </column>
     <index id="44" parent="18" name="PK__event__3213E83F9E9607B3">

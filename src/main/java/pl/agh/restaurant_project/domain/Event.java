@@ -16,9 +16,10 @@ public class Event {
 
     String text;
 
-    LocalDateTime starttime;
+    LocalDateTime start;
 
-    LocalDateTime endtime;
+    @Column(name = "_end")
+    LocalDateTime end;
 
     @ManyToOne
     @JsonIgnore
@@ -52,18 +53,18 @@ public class Event {
         this.text = text;
     }
 
-    public LocalDateTime getStarttime() {
-        return starttime;
+    public LocalDateTime getStart() {
+        return start;
     }
 
-    public void setStarttime(LocalDateTime start) {
-        this.starttime = start;
+    public void setStart(LocalDateTime start) {
+        this.start = start;
     }
 
-    public LocalDateTime getEndtime() { return endtime; }
+    public LocalDateTime getEnd() { return end; }
 
-    public void setEndtime(LocalDateTime end) {
-        this.endtime = end;
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
     }
 
     public Resource getResource() {

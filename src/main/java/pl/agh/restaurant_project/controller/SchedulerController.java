@@ -75,8 +75,8 @@ public class SchedulerController {
         Resource r = rr.findById(params.resource).orElse(null);
 
         Event e = new Event();
-        e.setStarttime(params.start);
-        e.setEndtime(params.end);
+        e.setStart(params.start);
+        e.setEnd(params.end);
         e.setText(params.text);
         e.setResource(r);
         er.save(e);
@@ -117,10 +117,9 @@ public class SchedulerController {
         Event e = er.findById(params.id).orElse(null);
         Resource r = rr.findById(params.resource).orElse(null);
 
-        e.setStarttime(params.start);
-        e.setEndtime(params.end);
+        e.setStart(params.start);
+        e.setEnd(params.end);
         e.setResource(r);
-
         er.save(e);
 
         return e;
