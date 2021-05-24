@@ -2,7 +2,6 @@ package pl.agh.restaurant_project.controller;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 import pl.agh.restaurant_project.domain.*;
 import pl.agh.restaurant_project.repository.EventRepository;
@@ -37,7 +36,14 @@ public class SchedulerController {
     @RequestMapping("/scheduler")
     public ModelAndView index () {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("scheduler/harmonogram");
+        modelAndView.setViewName("scheduler/scheduler_month");
+        return modelAndView;
+    }
+
+    @RequestMapping("/scheduler2")
+    public ModelAndView index2 () {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("scheduler/scheduler_week");
         return modelAndView;
     }
 

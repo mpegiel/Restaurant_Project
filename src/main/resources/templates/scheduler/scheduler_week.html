@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Harmonogram</title>
+
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="icons/style.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        .scheduler_default_main .scheduler_default_cell.scheduler_default_cellparent {
+            background-color: #f0f0f0;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="header">
+    <h1>Harmonogram pracowników - tydzień </h1>
+</div>
+
+<div class="main">
+    <div id="dp"></div>
+</div>
+
+<!-- DayPilot library -->
+<script src="js/daypilot/daypilot-all.min.js"></script>
+
+<script>
+    var dp = new DayPilot.Scheduler("dp");
+    dp.eventHeight = 35;
+    dp.startDate = DayPilot.Date.today().firstDayOfWeek();
+    dp.days = 7;
+    dp.scale = "Hour";
+    dp.businessBeginsHour = 11;
+    dp.businessEndsHour = 22;
+    dp.showNonBusiness = false;
+    dp.eventMoveSkipNonBusiness = true;
+    dp.timeHeaders = [
+        {groupBy: "Day", format: "dddd M/d/yyyy"},
+        {groupBy: "Hour"}
+    ];
+    dp.treeEnabled = true;
+    dp.treePreventParentUsage = true;
+    //dp.linkCreateHandling = "Update";
+    dp.linkBottomMargin = 20;
+    dp.jointEventsMove = false;
+    dp.jointEventsResize = false;
+    dp.onBeforeResHeaderRender = function(args) {
+        if (args.resource.children && args.resource.children.length > 0) {
+            args.resource.eventHeight = 30;
+        }
+    };
+    dp.onTimeRangeSelected = function (args) {
+        DayPilot.Modal.prompt("Dodaj zmianę pracownika:", "#1").then(function (modal) {
+            var dp = args.control;
+            dp.clearSelection();
+            if (modal.canceled) {
+                return;
+            }
+            var params = {
+                start: args.start.toString(),
+                end: args.end.toString(),
+                text: modal.result,
+                resource: args.resource
+            };
+            DayPilot.Http.ajax({
+                url: '/api/events/create',
+                data: params,
+                success: function (ajax) {
+                    var data = ajax.data;
+                    var list = data.events;
+                    list.forEach(function(data) {
+                        var e = dp.events.find(data.id);
+                        if (e) {
+                            e.data.text = text;
+                            dp.events.update(e);
+                        }
+                        else {
+                            dp.events.add(data);
+                        }
+                    });
+                    dp.message("Zmiana pracownika została dodana");
+                },
+                error: function(args) {
+                    alert(args.request.readyState);
+                    alert(args.request.status);
+                }
+            });
+        });
+    };
+    dp.onEventMove = function (args) {
+        if (args.areaData === "event-copy") {
+            args.preventDefault();
+
+            var params = {
+                start: args.newStart.toString(),
+                end: args.newEnd.toString(),
+                text: args.e.text(),
+                resource: args.newResource,
+                link: {
+                    from: args.e.id()
+                }
+            };
+
+            DayPilot.Http.ajax({
+                url: '/api/events/create',
+                data: params,
+                success: function (ajax) {
+                    var data = ajax.data;
+                    var list = data.events;
+                    list.forEach(function(data) {
+                        var e = dp.events.find(data.id);
+                        if (e) {
+                            e.data.hasNext = data.hasNext;
+                            dp.events.update(e);
+                        }
+                        else {
+                            dp.events.add(data);
+                            dp.links.add({
+                                from: args.e.id(),
+                                to: data.id
+                            });
+                        }
+                    });
+                    dp.message("Zmiana pracownika została dodana");
+                },
+                complete: function(response, textStatus) {
+                    return alert("Hey: " + textStatus);
+                }
+            });
+
+        }
+        else {
+            var params = {
+                id: args.e.id(),
+                start: args.newStart.toString(),
+                end: args.newEnd.toString(),
+                resource: args.newResource
+            };
+            DayPilot.Http.ajax({
+                url: '/api/events/move',
+                data: params,
+                success: function () {
+                    // dp.message("Zmiana została przeniesiona");
+                },
+            });
+        }
+
+    };
+    dp.onEventResize = function (args) {
+        var params = {
+            id: args.e.id(),
+            start: args.newStart.toString(),
+            end: args.newEnd.toString(),
+            resource: args.e.resource()
+        };
+        DayPilot.Http.ajax({
+            url: '/api/events/move',
+            data: params,
+            success: function () {
+                // dp.message("Zmieniono długość zmiany");
+            },
+        });
+    };
+    dp.onBeforeEventRender = function(args) {
+        args.data.barColor = args.data.color;
+
+        var duration = new DayPilot.Duration(args.data.start, args.data.end);
+        args.data.html = "<div><b>" + args.data.text + "</b><br>" + duration.toString("h") + " hours</div>";
+
+        if (args.data.hasNext) {
+            return;
+        }
+        args.data.areas = [
+            {
+                right: 2,
+                bottom: 2,
+                width: 16,
+                height: 16,
+                backColor: "#fff",
+                style: "box-sizing: border-box; border-radius: 7px; padding-left: 3px; border: 1px solid #ccc;font-size: 14px;line-height: 14px;color: #999;",
+                html: "&raquo;",
+                toolTip: "Drag to schedule next step",
+                action: "Move",
+                data: "event-copy"
+            }
+        ];
+    };
+    dp.onEventMoving = function(args) {
+        if (args.areaData && args.areaData === "event-copy") {
+            args.link = {
+                from: args.e,
+                color: "#666"
+            };
+            args.start = args.end.addHours(-1);
+            if (args.e.end() > args.start) {
+                args.allowed = false;
+                args.link.color = "red";
+            }
+        }
+    };
+    dp.onEventClick = function(args) {
+        DayPilot.Modal.prompt("Task name:", args.e.text()).then(function(modal) {
+            if (modal.canceled) {
+                return;
+            }
+            var text = modal.result;
+            var params = {
+                join: args.e.data.join,
+                text: text
+            };
+            DayPilot.Http.ajax({
+                url: '/api/events/setText',
+                data: params,
+                success: function (ajax) {
+                    var data = ajax.data;
+                    var list = data.events;
+                    list.forEach(function(data) {
+                        var e = dp.events.find(data.id);
+                        if (e) {
+                            e.data.text = text;
+                            dp.events.update(e);
+                        }
+                    });
+                    dp.message("Tekst został zaktualizowany");
+                }
+            });
+        });
+    };
+    dp.contextMenu = new DayPilot.Menu({
+        items: [
+            {
+                text: "Delete",
+                onClick: function(args) {
+                    var params = {
+                        id: args.source.id(),
+                    };
+                    DayPilot.Http.ajax({
+                        url: '/api/events/delete',
+                        data: params,
+                        success: function (ajax) {
+                            var data = ajax.data;
+                            data.deleted.forEach(function(id) {
+                                dp.events.removeById(id);
+                            });
+                            data.updated.forEach(function(data) {
+                                var e = dp.events.find(data.id);
+                                if (e) {
+                                    e.data.hasNext = data.hasNext;
+                                    dp.events.update(e);
+                                }
+                            });
+                            dp.message("Zmiana pracownika została usunięta");
+                        }
+                    });
+                }
+            },
+            {
+                text: "-"
+            },
+            {
+                text: "Blue",
+                icon: "icon icon-blue",
+                color: "#1155cc",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Green",
+                icon: "icon icon-green",
+                color: "#6aa84f",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Yellow",
+                icon: "icon icon-yellow",
+                color: "#f1c232",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Red",
+                icon: "icon icon-red",
+                color: "#cc0000",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+
+        ]
+    });
+    dp.init();
+
+    dp.rows.load(
+        "/api/resources",
+        function(args) {
+//             dp.message("Resources loaded ", {delay: 5000});
+        },
+        function(args){
+            dp.message("Resources not loaded", {delay: 5000});
+        }
+    );
+    dp.events.load(
+        "/api/events",
+        function success(args) {
+            dp.message("Events loaded", {delay: 3000});
+        },
+        function error(args) {
+            dp.message("Loading events failed.", {delay: 3000});
+        }
+    );
+    dp.links.load(
+        "/api/links",
+        function success(args) {
+            // dp.message("Links loaded", {delay: 1000});
+        },
+        function error(args) {
+            dp.message("Loading links failed.", {delay: 1000});
+        }
+    );
+
+    function updateColor(e, color) {
+        var params = {
+            join: e.data.join,
+            color: color
+        };
+        DayPilot.Http.ajax({
+            url: '/api/events/setColor',
+            data: params,
+            success: function (ajax) {
+                var data = ajax.data;
+                var list = data.events;
+                list.forEach(function(data) {
+                    var e = dp.events.find(data.id);
+                    if (e) {
+                        e.data.color = color;
+                        dp.events.update(e);
+                    }
+                });
+            }
+        });
+    }
+</script>
+<div class="link">
+    <a href="/#home">strona główna</a>
+</div>
+<div class="link">
+    <a href="/scheduler">harmonogram miesięczny</a>
+</div>
+</body>
+</html>
