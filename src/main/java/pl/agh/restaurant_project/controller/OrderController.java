@@ -9,15 +9,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 import pl.agh.restaurant_project.domain.Menu;
 import pl.agh.restaurant_project.domain.Order;
 import pl.agh.restaurant_project.domain.OrderItem;
+import pl.agh.restaurant_project.domain.Warehouse;
 import pl.agh.restaurant_project.repository.MenuRepository;
 import pl.agh.restaurant_project.repository.OrderItemRepository;
 import pl.agh.restaurant_project.repository.OrderRepository;
 import pl.agh.restaurant_project.service.OrderItemService;
 import pl.agh.restaurant_project.service.OrderService;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,8 +85,42 @@ public class OrderController {
 
             List<OrderItem> orderItems = orderItemService.getOrderItemsByOrder(order);//order.getOrderItems();
             model.addAttribute("orderItems", orderItems);
+
+            double wholePrice = 0;
+            for (OrderItem item : orderItems) {
+                wholePrice += item.getMeal().getPrice() * item.getQuantity();
+            }
+            model.addAttribute("wholePrice", wholePrice);
         }
 
         return "/orders/edit";
     }
+
+//    @RequestMapping("/orders/check/{id}")
+//    public void downloadCheck(HttpServletResponse response) throws IOException {
+//
+//        String csvFileName = "check.csv";
+//
+//        response.setContentType("text/csv");
+//        String headerKey = "Content-Disposition";
+//        String headerValue = String.format("attachment; filename=\"%s\"",
+//                csvFileName);
+//        response.setHeader(headerKey, headerValue);
+//
+//        List<OrderItem> orderItems = orderItemService.getOrderItemsByOrder(order);
+//
+//        List<Warehouse> tmp= repository.findAll();
+//        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
+//                CsvPreference.STANDARD_PREFERENCE);
+//
+//        String[] header = { "product", "quantity", "price" };
+//
+//        csvWriter.writeHeader(header);
+//
+//        for (OrderItem item : orderItems) {
+//            csvWriter.write(item, header);
+//        }
+//
+//        csvWriter.close();
+//    }
 }
