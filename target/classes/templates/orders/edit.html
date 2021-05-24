@@ -159,11 +159,11 @@
             <td><span th:text="${orderItem.meal.getNameOfMeal()}"> name </span></td>
             <td><span th:text="${orderItem.meal.getPrice()}"> price </span></td>
             <td><span th:text="${orderItem.quantity}"> quantity </span></td>
+<!--            <td>-->
+<!--                <a th:href="@{/orderitems/edit/{id}(id=${orderItem.id})}">Edit</a>-->
+<!--            </td>-->
             <td>
-                <a th:href="@{/orderitems/edit/{id}(id=${orderItem.id})}">Edit</a>
-            </td>
-            <td>
-                <a th:href="@{/orderitems/delete/{id}(id=${orderItem.id})}">Delete</a>
+                <a th:href="@{'/orderitems/delete/' + ${orderId} + '/' + ${orderItem.id}}">Delete</a>
             </td>
         </tr>
         </tbody>

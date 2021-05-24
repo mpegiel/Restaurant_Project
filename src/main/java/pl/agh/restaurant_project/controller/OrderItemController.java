@@ -55,13 +55,19 @@ public class OrderItemController {
         return "/orderitems/create";
     }
 
-    @RequestMapping(value = "/orderitems/save/{id}", method = RequestMethod.POST)
-    public String saveOrderItem(@ModelAttribute("orderItem") OrderItem orderItem, @PathVariable("id") Optional<Long> orderId, Model model, BindingResult result) {
-        orderItem.setOrder(orderRepo.findById(orderId.get()).get());
+    @RequestMapping(value = "/orderitems/save/{orderId}", method = RequestMethod.POST)
+    public String saveOrderItem(@ModelAttribute("orderItem") OrderItem orderItem, @PathVariable("orderId") Long orderId, Model model, BindingResult result) {
+        orderItem.setOrder(orderRepo.findById(orderId).get());
         //System.out.println(orderItem.getOrder().getId());
         orderItemService.save(orderItem);
 
         //model.addAttribute("orders", orderItemRepo.findAll() );
-        return "redirect:/orders/all";
+        return "redirect:/orders/edit/" + orderId.toString();
+    }
+
+    @RequestMapping("/orderitems/delete/{orderId}/{id}")
+    public String deleteOrder(@PathVariable(name = "id") int id, @PathVariable("orderId") Long orderId) {
+        orderItemService.delete(id);
+        return "redirect:/orders/edit/" + orderId.toString();
     }
 }
