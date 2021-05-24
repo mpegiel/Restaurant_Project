@@ -50,6 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login");
+
+        http.headers()
+                .frameOptions().sameOrigin()
+                .httpStrictTransportSecurity().disable();
+
+        http.csrf().disable();
+
     }
 
     @Bean

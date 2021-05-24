@@ -13,6 +13,7 @@
         }
     </style>
 
+
 </head>
 <body>
 <div class="header">
@@ -28,9 +29,9 @@
 
 <script>
     var dp = new DayPilot.Scheduler("dp");
-    dp.eventHeight = 25;
-    dp.startDate = "2021-05-10";
-    dp.days = 20;
+    dp.eventHeight = 35;
+    dp.startDate = DayPilot.Date.today().firstDayOfMonth();
+    dp.days = DayPilot.Date.today().daysInMonth();
     dp.scale = "Hour";
     dp.businessBeginsHour = 11;
     dp.businessEndsHour = 22;
@@ -52,7 +53,7 @@
         }
     };
     dp.onTimeRangeSelected = function (args) {
-        DayPilot.Modal.prompt("Create a new job:", "Job").then(function (modal) {
+        DayPilot.Modal.prompt("Dodaj zmianę pracownika:", "Job").then(function (modal) {
             var dp = args.control;
             dp.clearSelection();
             if (modal.canceled) {
@@ -82,13 +83,10 @@
                 });
                 dp.message("Job created");
               },
-              error: function(response, textStatus,xhr,err) {
-                    return alert("text status: " + textStatus +
-                        "error: " + err +
-                        "readyState: " + xhr.readyState +
-                        "responseText: "+ xhr.responseText +
-                        "text status: " + textStatus);
-              },
+                error: function(args) {
+                    alert(args.request.readyState);
+                    alert(args.request.status);
+                }
             });
         });
     };
@@ -105,6 +103,7 @@
                     from: args.e.id()
                 }
             };
+
             DayPilot.Http.ajax({
               url: '/api/events/create',
               data: params,
@@ -290,9 +289,33 @@
     });
     dp.init();
 
-    dp.rows.load("/api/resources");
-    dp.events.load("/api/events");
-    dp.links.load("/api/links");
+    dp.rows.load(
+        "/api/resources",
+        function(args) {
+//             dp.message("Resources loaded ", {delay: 5000});
+        },
+        function(args){
+             dp.message("Resources not loaded", {delay: 5000});
+        }
+    );
+    dp.events.load(
+        "/api/events",
+        function success(args) {
+            dp.message("Events loaded", {delay: 3000});
+        },
+        function error(args) {
+            dp.message("Loading events failed.", {delay: 3000});
+        }
+    );
+    dp.links.load(
+        "/api/links",
+        function success(args) {
+            // dp.message("Links loaded", {delay: 1000});
+        },
+        function error(args) {
+            dp.message("Loading links failed.", {delay: 1000});
+        }
+    );
 
     function updateColor(e, color) {
         var params = {

@@ -55,13 +55,13 @@ public class SchedulerController {
 
     @GetMapping("/api/events")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    Iterable<Event> events(@RequestParam("starttime") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime starttime, @RequestParam("endtime") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime endtime) {
-        return er.findBetween(starttime, endtime);
+    Iterable<Event> events(@RequestParam("start") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime start, @RequestParam("end") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime end) {
+        return er.findBetween(start, end);
     }
 
     @GetMapping("/api/links")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    Iterable<Link> links(@RequestParam("starttime") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime starttime, @RequestParam("end") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime endtime) {
+    Iterable<Link> links(@RequestParam("start") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime start, @RequestParam("end") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime end) {
         return lr.findAll();
     }
 
@@ -75,8 +75,8 @@ public class SchedulerController {
         Resource r = rr.findById(params.resource).orElse(null);
 
         Event e = new Event();
-        e.setStarttime(params.starttime);
-        e.setEndtime(params.endtime);
+        e.setStarttime(params.start);
+        e.setEndtime(params.end);
         e.setText(params.text);
         e.setResource(r);
         er.save(e);
@@ -117,8 +117,8 @@ public class SchedulerController {
         Event e = er.findById(params.id).orElse(null);
         Resource r = rr.findById(params.resource).orElse(null);
 
-        e.setStarttime(params.starttime);
-        e.setEndtime(params.endtime);
+        e.setStarttime(params.start);
+        e.setEndtime(params.end);
         e.setResource(r);
 
         er.save(e);
@@ -201,8 +201,8 @@ public class SchedulerController {
     }
 
     public static class EventCreateParams {
-        public LocalDateTime starttime;
-        public LocalDateTime endtime;
+        public LocalDateTime start;
+        public LocalDateTime end;
         public String text;
         public Long resource;
         public LinkCreateParams link;
@@ -214,8 +214,8 @@ public class SchedulerController {
 
     public static class EventMoveParams {
         public Long id;
-        public LocalDateTime starttime;
-        public LocalDateTime endtime;
+        public LocalDateTime start;
+        public LocalDateTime end;
         public Long resource;
     }
 
