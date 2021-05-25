@@ -81,11 +81,11 @@
                             dp.events.add(data);
                         }
                     });
-                    dp.message("Zmiana pracownika została dodana");
+                    dp.message("Dodano zmianę pracownika");
                 },
                 error: function(args) {
-                    alert(args.request.readyState);
-                    alert(args.request.status);
+                    // alert(args.request.readyState);
+                    // alert(args.request.status);
                 }
             });
         });
@@ -124,7 +124,7 @@
                             });
                         }
                     });
-                    dp.message("Zmiana pracownika została dodana");
+                    dp.message("Dodano zmianę pracownika");
                 },
                 complete: function(response, textStatus) {
                     return alert("Hey: " + textStatus);
@@ -224,7 +224,7 @@
                             dp.events.update(e);
                         }
                     });
-                    dp.message("Tekst został zaktualizowany");
+                    dp.message("Zaktualizowano opis");
                 }
             });
         });
@@ -252,7 +252,7 @@
                                     dp.events.update(e);
                                 }
                             });
-                            dp.message("Zmiana pracownika została usunięta");
+                            dp.message("Usunięto zmianę");
                         }
                     });
                 }
@@ -301,7 +301,7 @@
     dp.events.load(
         "/api/events",
         function success(args) {
-            dp.message("Events loaded", {delay: 3000});
+            // dp.message("Events loaded", {delay: 3000});
         },
         function error(args) {
             dp.message("Loading events failed.", {delay: 3000});
