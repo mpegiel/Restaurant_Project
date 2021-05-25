@@ -137,7 +137,7 @@
 </head>
 <body>
 <div class="table-title">
-    <h3>Add New Order</h3>
+    <h3>Order</h3>
 </div>
 <br />
 <form action="#" th:action="@{/orders/save}" th:object="${order}"
@@ -146,7 +146,9 @@
     <table class="table-fill">
         <thead>
         <tr>
-            <th> Order Item  </th>
+            <th> Meal </th>
+            <th> Price </th>
+            <th> Quantity </th>
         </tr>
         </thead>
         <tbody>
@@ -154,18 +156,37 @@
             <td colspan="5"> No Order Items added. </td>
         </tr>
         <tr th:each="orderItem: ${orderItems}">
-            <td><span th:text="${orderItem.quantity}"> Order Code</span></td>
+            <td><span th:text="${orderItem.meal.getNameOfMeal()}"> name </span></td>
+            <td><span th:text="${orderItem.meal.getPrice()}"> price </span></td>
+            <td><span th:text="${orderItem.quantity}"> quantity </span></td>
+<!--            <td>-->
+<!--                <a th:href="@{/orderitems/edit/{id}(id=${orderItem.id})}">Edit</a>-->
+<!--            </td>-->
             <td>
-                <a th:href="@{/orderitems/edit/{id}(id=${orderItem.id})}">Edit</a>
-            </td>
-            <td>
-                <a th:href="@{/orderitems/delete/{id}(id=${orderItem.id})}">Delete</a>
+                <a th:href="@{'/orderitems/delete/' + ${orderId} + '/' + ${orderItem.id}}">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+    </p>
+
+    <p>
+    <table class="table-fill">
+        <thead>
+            <tr>
+                <th> SUM </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span th:text="${wholePrice}">Price</span></td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="table-link" >
-        <a th:href="@{/orderitems/create/{id}(id=${orderId})}">Add new order item</a> <br />
+        <a th:href="@{/orderitems/create/{id}(id=${orderId})}">Add new order item</a> <br/>
+        <a href="/downloadCheck">Download check</a> <br/>
     </div>
     </p>
 

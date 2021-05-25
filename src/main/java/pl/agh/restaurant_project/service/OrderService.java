@@ -2,9 +2,7 @@ package pl.agh.restaurant_project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.agh.restaurant_project.domain.Menu;
 import pl.agh.restaurant_project.domain.Order;
-import pl.agh.restaurant_project.repository.MenuRepository;
 import pl.agh.restaurant_project.repository.OrderRepository;
 
 import java.util.List;
