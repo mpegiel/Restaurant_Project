@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .frameOptions().sameOrigin()
                 .httpStrictTransportSecurity().disable();
 
-        http.csrf().disable();
+        http.csrf().ignoringAntMatchers("/api/events/*");
 
     }
 
