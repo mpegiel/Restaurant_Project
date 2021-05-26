@@ -21,7 +21,7 @@
 - Now from parent directory... <br>```cd Restaurant_Project/```<br>```intellij-idea-ultimate ./```<br>And if you trust our team, click "Trust Project" :) ![Config_1](./tutorial_img/Config_1.png)
 - Wait few minutes... <br>After indexing and downloading Maven dependencies, the interface should look like that: ![Config_2](./tutorial_img/Config_2.png)
   To run a program just click on a green arrow, available next to the box with text <em>"RestaurantProjectApplication"</em>.
-- To run all tests just use simple buttons combination: <em>Ctrl+Shift+F10</em>. If you want execute specific test, in the project explorer go to <em>src/test/java/pl.agh.restaurant/</em> and click with the right mouse button on the chosen test. Next, you must press Run "test_name" ![Tests_1](./tutorial_img/Tests_1.png)<br><br>
+- To run all tests just use simple buttons combination: <em>Ctrl+Shift+F10</em>. If you want to execute a specific test, in the project explorer go to <em>src/test/java/pl.agh.restaurant/</em> and click with the right mouse button on the chosen test. Next, you must press Run "test_name" ![Tests_1](./tutorial_img/Tests_1.png)<br><br>
 # NOTES
 - If prompt about JDK 16 appears, just let it install automatically 
 - The application is deafulty starting on port 8080, if you want run it on other port just paste ```server.port=port_number``` to <em>application.properties</em> file.
