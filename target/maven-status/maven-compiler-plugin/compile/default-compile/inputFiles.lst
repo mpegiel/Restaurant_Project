@@ -10,10 +10,13 @@
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/CustomUserDetailsService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/ResourceGroupRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/MenuController.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/OrderItemController.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/ResourceGroup.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/User.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/PasswordResetController.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/OrderItemService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/SecurityConfig.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/OrderItem.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/SchedulerController.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/MenuRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/controller/UserController.java
@@ -23,6 +26,7 @@
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/OrderService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/WarehouseService.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/service/ReservationService.java
+/home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/OrderItemRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/OrderRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/repository/ResourceRepository.java
 /home/piotrek/Restaurant_Project/src/main/java/pl/agh/restaurant_project/domain/Resource.java
