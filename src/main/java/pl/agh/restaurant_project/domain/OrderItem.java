@@ -10,11 +10,11 @@ public class OrderItem {
     private Long id;
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "meal_id")
     private Menu meal;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "order_id")
     private Order order;
 
