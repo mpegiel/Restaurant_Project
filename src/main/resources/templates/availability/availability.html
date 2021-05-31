@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+<!--    <title>Dyspozycyjność</title>-->
+
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="icons/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div class="header">
+        <h1>Dyspozycyjność na przyszły miesiąc</h1>
+</div>
+
+<div class="main">
+    <div id="dp"></div>
+</div>
+
+<!-- DayPilot library -->
+<script src="js/daypilot/daypilot-all.min.js"></script>
+
+<script>
+    var dp = new DayPilot.Scheduler("dp");
+    dp.startDate = DayPilot.Date.today().addMonths(1).firstDayOfMonth();
+    dp.days = DayPilot.Date.today().addMonths(1).daysInMonth();
+    dp.scale = "Day";
+    dp.timeHeaders = [
+        {groupBy: "Month"},
+        {groupBy: "Day", format: "d"}
+    ];
+    dp.treeEnabled = true;
+
+
+    dp.onTimeRangeSelected = function (args) {
+        DayPilot.Modal.prompt("Komentarz:", "").then(function (modal) {
+            var dp = args.control;
+            dp.clearSelection();
+            if (!modal.result) {
+                return;
+            }
+            var params = {
+                start: args.start.toString(),
+                end: args.end.toString(),
+                text: modal.result,
+                resource: args.resource
+            };
+            DayPilot.Http.ajax({
+                url: '/api/availabilityevents/create',
+                data: params,
+                success: function (ajax) {
+                    var data = ajax.data;
+                    dp.events.add(new DayPilot.Event(data));
+                    dp.message("Dodano dyspozycję");
+                },
+            });
+        });
+    };
+    dp.onEventMove = function (args) {
+        var params = {
+            id: args.e.id(),
+            start: args.newStart.toString(),
+            end: args.newEnd.toString(),
+            resource: args.newResource
+        };
+        DayPilot.Http.ajax({
+            url: '/api/availabilityevents/move',
+            data: params,
+            success: function (ajax) {
+                // dp.message("Event moved");
+            },
+        });
+    };
+    dp.onEventResize = function (args) {
+        var params = {
+            id: args.e.id(),
+            start: args.newStart.toString(),
+            end: args.newEnd.toString(),
+            resource: args.e.resource()
+        };
+        DayPilot.Http.ajax({
+            url: '/api/availabilityevents/move',
+            data: params,
+            success: function (ajax) {
+                // dp.message("Event resized");
+            },
+        });
+    };
+    dp.onBeforeEventRender = function(args) {
+        args.data.barColor = args.data.color;
+        args.data.areas = [
+            { top: 6, right: 2, icon: "icon-triangle-down", visibility: "Hover", action: "ContextMenu", style: "font-size: 12px; background-color: #f9f9f9; border: 1px solid #ccc; padding: 2px 2px 0px 2px; cursor:pointer;"}
+        ];
+    };
+    dp.contextMenu = new DayPilot.Menu({
+        items: [
+            {
+                text: "Blue",
+                icon: "icon icon-blue",
+                color: "#1155cc",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Green",
+                icon: "icon icon-green",
+                color: "#6aa84f",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Yellow",
+                icon: "icon icon-yellow",
+                color: "#f1c232",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+            {
+                text: "Red",
+                icon: "icon icon-red",
+                color: "#cc0000",
+                onClick: function(args) { updateColor(args.source, args.item.color); }
+            },
+
+        ]
+    });
+    dp.init();
+
+    dp.rows.load("/api/resources");
+    dp.events.load("/api/availabilityevents");
+
+
+    function updateColor(e, color) {
+        var params = {
+            id: e.id(),
+            color: color
+        };
+        DayPilot.Http.ajax({
+            url: '/api/availabilityevents/setColor',
+            data: params,
+            success: function (ajax) {
+                var data = ajax.data;
+                e.data.color = color;
+                dp.events.update(e);
+                // dp.message("Color updated");
+            },
+        });
+    }
+</script>
+
+</body>
+</html>

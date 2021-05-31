@@ -29,12 +29,14 @@
 
 <script>
     var dp = new DayPilot.Scheduler("dp");
-    dp.eventHeight = 35;
+    dp.cellWidth = 37;
+    dp.eventHeight = 37;
     dp.startDate = DayPilot.Date.today().firstDayOfWeek();
     dp.days = 7;
     dp.scale = "Hour";
     dp.businessBeginsHour = 11;
     dp.businessEndsHour = 22;
+    dp.businessWeekends = true;
     dp.showNonBusiness = false;
     dp.eventMoveSkipNonBusiness = true;
     dp.timeHeaders = [
@@ -47,13 +49,23 @@
     dp.linkBottomMargin = 20;
     dp.jointEventsMove = false;
     dp.jointEventsResize = false;
+
+    dp.scrollTo(new DayPilot.Date());
+
     dp.onBeforeResHeaderRender = function(args) {
         if (args.resource.children && args.resource.children.length > 0) {
             args.resource.eventHeight = 30;
         }
     };
+
+    dp.onBeforeCellRender = function(args) {
+        if (args.cell.start <= DayPilot.Date.today() && DayPilot.Date.today() < args.cell.end) {
+            args.cell.backColor = "#ffcccc";
+        }
+    };
+
     dp.onTimeRangeSelected = function (args) {
-        DayPilot.Modal.prompt("Dodaj zmianę pracownika:", "#1").then(function (modal) {
+        DayPilot.Modal.prompt("Dodaj zmianę pracownika:", "zmiana#").then(function (modal) {
             var dp = args.control;
             dp.clearSelection();
             if (modal.canceled) {

@@ -42,8 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/warehouse/**").hasAnyRole("ADMIN", "COOK", "ACCOUNTANT")
                 .antMatchers("/menu/**").hasAnyRole("ADMIN", "WAITER","COOK")
                 .antMatchers("/orders/**").hasAnyRole("ADMIN", "WAITER")
-//                .antMatchers("/api/events/create", "/api/events/delete", "/api/events/move", "/api/events/setColor", "/api/events/setText").hasAnyRole("ADMIN")
                 .antMatchers("/api/events/*").hasAnyRole("ADMIN")
+                .antMatchers("/api/availabilityevents/*").hasAnyRole("COOK", "WAITER" )
 
                 .anyRequest().authenticated().and().formLogin().loginPage("/login")
                 .permitAll()
@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .frameOptions().sameOrigin()
                 .httpStrictTransportSecurity().disable();
 
-        http.csrf().ignoringAntMatchers("/api/events/*");
+        http.csrf().ignoringAntMatchers("/api/events/*", "/api/avaibility/*");
 
     }
 
