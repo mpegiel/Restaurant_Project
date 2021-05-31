@@ -58,11 +58,6 @@
         }
     };
 
-    dp.onBeforeCellRender = function(args) {
-        if (args.cell.start <= DayPilot.Date.today() && DayPilot.Date.today() < args.cell.end) {
-            args.cell.backColor = "#ffcccc";
-        }
-    };
 
     dp.onTimeRangeSelected = function (args) {
         DayPilot.Modal.prompt("Dodaj zmianę pracownika:", "zmiana#").then(function (modal) {
