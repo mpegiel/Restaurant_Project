@@ -60,7 +60,7 @@
 
 
     dp.onTimeRangeSelected = function (args) {
-        DayPilot.Modal.prompt("Dodaj zmianę pracownika:", "zmiana#").then(function (modal) {
+        DayPilot.Modal.prompt("Tytuł:", "zmiana#").then(function (modal) {
             var dp = args.control;
             dp.clearSelection();
             if (modal.canceled) {
@@ -209,7 +209,7 @@
         }
     };
     dp.onEventClick = function(args) {
-        DayPilot.Modal.prompt("Task name:", args.e.text()).then(function(modal) {
+        DayPilot.Modal.prompt("Tytuł:", args.e.text()).then(function(modal) {
             if (modal.canceled) {
                 return;
             }

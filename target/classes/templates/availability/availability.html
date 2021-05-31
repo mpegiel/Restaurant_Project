@@ -33,18 +33,20 @@
 
 
     dp.onTimeRangeSelected = function (args) {
-        DayPilot.Modal.prompt("Komentarz:", "").then(function (modal) {
+        DayPilot.Modal.prompt("Komentarz:", "#").then(function (modal) {
             var dp = args.control;
             dp.clearSelection();
-            if (!modal.result) {
-                return;
-            }
+
+            // if (!modal.result) {
+            //     return;
+            // }
             var params = {
                 start: args.start.toString(),
                 end: args.end.toString(),
                 text: modal.result,
                 resource: args.resource
             };
+
             DayPilot.Http.ajax({
                 url: '/api/availabilityevents/create',
                 data: params,
@@ -53,9 +55,15 @@
                     dp.events.add(new DayPilot.Event(data));
                     dp.message("Dodano dyspozycję");
                 },
+                error: function(args) {
+                         alert(args.request.readyState);
+                         alert(args.request.status);
+                }
             });
         });
     };
+
+
     dp.onEventMove = function (args) {
         var params = {
             id: args.e.id(),
@@ -144,6 +152,10 @@
         });
     }
 </script>
+
+<div class="link">
+    <a href="/#home">strona główna</a>
+</div>
 
 </body>
 </html>

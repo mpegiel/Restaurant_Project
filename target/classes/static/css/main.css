@@ -72,6 +72,6 @@ a:link, a:visited{
 
 }
 a:hover, a:active{
-    background: gray;
+    background: rgb(183, 181, 180);
 }
 
